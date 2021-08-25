@@ -1,12 +1,24 @@
 <resources>
     <string name="app_name">MobileApp</string>
+    //retrieve material
+    <string name="retrieveTitle">Retrieve Materials</string>
+    <string name="scanButton">Scan Serial No.  </string>
+    <string name="backButton">Back </string>
+    <string name="rackID">Rack ID:</string>
+    <string name="rackNum">Rack No:</string>
+    <string name="partNum">Part No:</string>
+    <string name="SerialNum">Serial No:</string>
+    <string name="RackOutDate">Rack Out Date: </string>
+    <string name="quantity">Quantity:</string>
+    <string name="status">Status</string>
+    <string name="checkList">View Checklist</string>
     //receive
     <string name="material">Receive Materials</string>
     <string name="back">Back</string>
     <string name="partNo">Part No.:</string>
     <string name="serialNo">Serial No.:</string>
-    <string name="quantity">Quantity:</string>
-    <string name="status">Status:</string>
+    <string name="quantityReceive">Quantity:</string>
+    <string name="statusReceive">Status:</string>
     <string name="receiveDate">Received Date:</string>
     <string name="receiveBy">Received By:</string>
     <string name="scan">Scan</string>
