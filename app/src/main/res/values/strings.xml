@@ -24,5 +24,8 @@
     <string name="scan">Scan</string>
     //checklist
     <string name="checklistTitle">Material Checklist</string>
+    //store materials
+    <string name="storeTitle">Store Materials</string>
+    <string name="RackInDate">Rack In Date: </string>
 
 </resources>

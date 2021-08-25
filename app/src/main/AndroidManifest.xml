@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
-        <activity android:name=".retrieve_checklist"></activity>
+        <activity android:name=".StoreMaterials"></activity>
+        <activity android:name=".retrieve_checklist" />
         <activity android:name=".RetrieveMaterials" />
         <activity android:name=".Receive" />
         <activity android:name=".MainActivity">
