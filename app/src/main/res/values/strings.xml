@@ -1,5 +1,27 @@
 <resources>
     <string name="app_name">MobileApp</string>
+    //Report
+    <string name="ReportTitle">Material Report</string>
+    <string name="search">Search</string>
+    <string name="show">Choose what to Show</string>
+    <string name="ReportPart">Part No.</string>
+    <string name="ReportSerial">Serial No.</string>
+    <string name="ReportRackNo">Rack No.</string>
+    <string name="ReportRackID">Rack ID.</string>
+    <string name="ReportStatus">Status</string>
+    <string name="ReportQuantity">Quantity</string>
+    <string name="ReportStaffID">Staff ID</string>
+    <string name="ReportRackIn">Rack In</string>
+    <string name="ReportRackOut">Rack Out</string>
+    <string name="ReportQR">Generate QR</string>
+    <string name="ReportExcel">Generate Excel</string>
+
+    <string-array name="income">
+        <item>Part No.</item>
+        <item>Serial No.</item>
+        <item>Status</item>
+        <item>Rack ID</item>
+    </string-array>
     //retrieve material
     <string name="retrieveTitle">Retrieve Materials</string>
     <string name="scanButton">Scan Serial No.  </string>
@@ -26,5 +48,4 @@
     //store materials
     <string name="storeTitle">Store Materials</string>
     <string name="RackInDate">Rack In Date: </string>
-
 </resources>

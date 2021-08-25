@@ -13,7 +13,8 @@
         <activity android:name=".retrieve_checklist" />
         <activity android:name=".RetrieveMaterials" />
         <activity android:name=".Receive" />
-        <activity android:name=".MainActivity">
+        <activity android:name="my.edu.tarc.mobileApp.Report"></activity>
+        <activity android:name="my.edu.tarc.mobileApp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
