@@ -14,7 +14,6 @@
     <string name="checkList">View Checklist</string>
     //receive
     <string name="material">Receive Materials</string>
-    <string name="back">Back</string>
     <string name="partNo">Part No.:</string>
     <string name="serialNo">Serial No.:</string>
     <string name="quantityReceive">Quantity:</string>
