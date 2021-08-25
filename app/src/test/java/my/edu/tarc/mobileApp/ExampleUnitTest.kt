@@ -1,4 +1,4 @@
-package my.edu.tarc.MobileApp
+package my.edu.tarc.mobileApp
 
 import org.junit.Test
 

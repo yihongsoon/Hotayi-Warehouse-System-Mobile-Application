@@ -1,4 +1,4 @@
-package my.edu.tarc.MobileApp
+package my.edu.tarc.mobileApp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

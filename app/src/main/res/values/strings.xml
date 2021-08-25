@@ -22,4 +22,7 @@
     <string name="receiveDate">Received Date:</string>
     <string name="receiveBy">Received By:</string>
     <string name="scan">Scan</string>
+    //checklist
+    <string name="checklistTitle">Material Checklist</string>
+
 </resources>
