@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnScanMat"
+        android:id="@+id/btnScanMaterial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -174,7 +174,7 @@
         android:text="@string/checkList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnScanMat" />
+        app:layout_constraintTop_toBottomOf="@+id/btnScanMaterial" />
 
     <TextView
         android:id="@+id/txtStoreRackID"

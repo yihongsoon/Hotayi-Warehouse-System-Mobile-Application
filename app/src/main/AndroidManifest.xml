@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="my.edu.tarc.mobileApp">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,12 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
-        <activity android:name=".StoreMaterials"></activity>
+        <activity android:name=".Scanner"></activity>
+        <activity android:name=".StoreMaterials" />
         <activity android:name=".retrieve_checklist" />
         <activity android:name=".RetrieveMaterials" />
         <activity android:name=".Receive" />
-        <activity android:name="my.edu.tarc.mobileApp.Report"></activity>
-        <activity android:name="my.edu.tarc.mobileApp.MainActivity">
+        <activity android:name=".Report" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

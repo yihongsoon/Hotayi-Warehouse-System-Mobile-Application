@@ -1,9 +1,9 @@
 {
   "project_info": {
     "project_number": "83381222626",
+    "firebase_url": "https://mobileapp-49132-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "mobileapp-49132",
-    "storage_bucket": "mobileapp-49132.appspot.com",
-    "firebase_url": "https://mobileapp-49132-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    "storage_bucket": "mobileapp-49132.appspot.com"
   },
   "client": [
     {
