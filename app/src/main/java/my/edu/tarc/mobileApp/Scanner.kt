@@ -58,20 +58,15 @@ class Scanner : AppCompatActivity() {
 
 // DONT COPY INI //
 
-
                 }
-
-
-
-
-
 
             }
             errorCallback = ErrorCallback {
                 runOnUiThread{
                     Log.e("Main", "Camera initialization error: ${it.message}")
+// DONT COPY INI //
                     intent.putExtra("scanStatus","false")
-
+// DONT COPY INI //
                 }
             }
         }
