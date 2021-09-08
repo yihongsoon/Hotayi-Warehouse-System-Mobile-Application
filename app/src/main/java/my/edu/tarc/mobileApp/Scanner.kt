@@ -70,6 +70,8 @@ class Scanner : AppCompatActivity() {
             errorCallback = ErrorCallback {
                 runOnUiThread{
                     Log.e("Main", "Camera initialization error: ${it.message}")
+                    intent.putExtra("scanStatus","false")
+
                 }
             }
         }
