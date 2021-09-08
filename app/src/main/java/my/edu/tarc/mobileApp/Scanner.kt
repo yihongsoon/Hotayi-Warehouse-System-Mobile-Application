@@ -29,6 +29,7 @@ class Scanner : AppCompatActivity() {
     public fun codeScanner(){
         val scanner = findViewById<CodeScannerView>(R.id.ScannerView)
         val text = findViewById<TextView>(R.id.textViewScanner)
+
         codeScanner = CodeScanner(this, scanner)
         codeScanner.apply{
             camera = CodeScanner.CAMERA_BACK
@@ -44,19 +45,20 @@ class Scanner : AppCompatActivity() {
                 runOnUiThread{
                     text.text = it.text
 
-// DONT COPY INI //
+// DONT COPY HERE-->
                 var str1= text.text
                  Log.d("QRCodeContent", str1.toString())
 
                     val intent = Intent(this@Scanner, RetrieveMaterials::class.java)
                     intent.putExtra("qrCodeContent", str1)
+
                     intent.putExtra("scanStatus","true")
                     startActivity(intent)
 
-                    Toast.makeText(applicationContext,str1.toString()+"    added ", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(applicationContext,str1.toString()+"    added ", Toast.LENGTH_SHORT).show()
 
 
-// DONT COPY INI //
+// TO HERE//
 
                 }
 

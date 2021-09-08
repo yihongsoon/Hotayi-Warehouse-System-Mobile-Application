@@ -36,58 +36,74 @@ class RetrieveMaterials : AppCompatActivity() {
 
         }
 
-            val intent = intent
-            val qrTest = intent.getStringExtra("qrCodeContent")
-            val scanningStatus = intent.getStringExtra("scanStatus")
+        val intent = intent
+        val qrTest = intent.getStringExtra("qrCodeContent")
+        val scanningStatus = intent.getStringExtra("scanStatus")
 
-            Log.d("TESTING", qrTest.toString())
-            Log.d("TEST STATUS", scanningStatus.toString())
+//            Log.d("TESTING", qrTest.toString())
+//            Log.d("TEST STATUS", scanningStatus.toString())
 
-            if(scanningStatus=="true"){
+        if (scanningStatus == "true") {
 
 
             val split = qrTest?.split(",")
-            val displayRackId = split?.get(0)
-            val displayRackNo = split?.get(1)
-            val displayPartNo = split?.get(2)
-            val displaySerialNo = split?.get(3)
+            //VALIDATION OF BARCODE ITEMS
+            val result = split?.count()
+            Log.d("Count", result.toString())
 
-            val rackId = findViewById<TextView>(R.id.txtStoreRackID)
-            val rackNo = findViewById<TextView>(R.id.txtStoreRackNo)
-            val partNo = findViewById<TextView>(R.id.txtStorePartNo)
-            val serialNo = findViewById<TextView>(R.id.txtStoreSerialNumber)
-            val retrieveStatus = findViewById<TextView>(R.id.txtStoreStatus)
-            val rackInDate = findViewById<TextView>(R.id.txtRackInDate)
-            val qty = findViewById<TextView>(R.id.txtStoreQty)
+            if (result == 4) {
 
+                val displayRackId = split?.get(0)
 
+                val displayRackNo = split?.get(1)
 
-            rackId.text = displayRackId
-            rackNo.text = displayRackNo
-            partNo.text = displayPartNo
-            serialNo.text = displaySerialNo
-            retrieveStatus.text = "RETRIEVED"
+                val displayPartNo = split?.get(2)
 
-            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-            val currentDate = sdf.format(Date())
+                val displaySerialNo = split?.get(3)
 
-            rackInDate.text = currentDate
-            qty.text = "1"
+            //display scanned barcode items into the text views
+                val rackId = findViewById<TextView>(R.id.txtStoreRackID)
+                val rackNo = findViewById<TextView>(R.id.txtStoreRackNo)
+                val partNo = findViewById<TextView>(R.id.txtStorePartNo)
+                val serialNo = findViewById<TextView>(R.id.txtStoreSerialNumber)
+                val retrieveStatus = findViewById<TextView>(R.id.txtStoreStatus)
+                val rackInDate = findViewById<TextView>(R.id.txtRackInDate)
+                val qty = findViewById<TextView>(R.id.txtStoreQty)
 
 
-        }else{
 
-                Toast.makeText(applicationContext,"Invalid Barcode Scanned", Toast.LENGTH_SHORT).show()
+                rackId.text = displayRackId
+                rackNo.text = displayRackNo
+                partNo.text = displayPartNo
+                serialNo.text = displaySerialNo
+                retrieveStatus.text = "RETRIEVED"
+
+                val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+                val currentDate = sdf.format(Date())
+
+                rackInDate.text = currentDate
+                qty.text = "1"
+
+            } else {
+                Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT)
+                    .show()
+
 
             }
 
 
+        }else {
+        }
+
+
+
+    }
 
     }
 
 
 
-    }
+
 
 
 
