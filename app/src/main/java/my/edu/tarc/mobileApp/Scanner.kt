@@ -1,6 +1,7 @@
 package my.edu.tarc.mobileApp
 
 import android.app.ProgressDialog.show
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,7 +26,7 @@ class Scanner : AppCompatActivity() {
         codeScanner()
     }
 
-    private fun codeScanner(){
+    public fun codeScanner(){
         val scanner = findViewById<CodeScannerView>(R.id.ScannerView)
         val text = findViewById<TextView>(R.id.textViewScanner)
         codeScanner = CodeScanner(this, scanner)
@@ -42,7 +43,29 @@ class Scanner : AppCompatActivity() {
             decodeCallback = DecodeCallback {
                 runOnUiThread{
                     text.text = it.text
+
+// DONT COPY INI //
+                var str1= text.text
+                 Log.d("QRCodeContent", str1.toString())
+
+                    val intent = Intent(this@Scanner, RetrieveMaterials::class.java)
+                    intent.putExtra("qrCodeContent", str1)
+                    intent.putExtra("scanStatus","true")
+                    startActivity(intent)
+
+                    Toast.makeText(applicationContext,str1.toString()+"    added ", Toast.LENGTH_SHORT).show()
+
+
+// DONT COPY INI //
+
+
                 }
+
+
+
+
+
+
             }
             errorCallback = ErrorCallback {
                 runOnUiThread{
@@ -54,6 +77,12 @@ class Scanner : AppCompatActivity() {
             codeScanner.startPreview()
         }
     }
+
+
+
+
+
+
     override fun onResume(){
         super.onResume()
         codeScanner.startPreview()
