@@ -16,7 +16,8 @@
         <activity android:name=".retrieve_checklist" />
         <activity android:name=".RetrieveMaterials" />
         <activity android:name=".Receive" />
-        <activity android:name=".Report" />
+        <activity android:name=".Report"
+            android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

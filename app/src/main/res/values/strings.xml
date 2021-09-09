@@ -15,10 +15,11 @@
     <string name="ReportRackOut">Rack Out</string>
     <string name="ReportQR">Generate QR</string>
     <string name="ReportExcel">Generate Excel</string>
+    <string name="typeHere">Type Here</string>
 
-    <string-array name="income">
-        <item>Part No.</item>
-        <item>Serial No.</item>
+    <string-array name="criteria">
+        <item>Part No</item>
+        <item>Serial No</item>
         <item>Status</item>
         <item>Rack ID</item>
     </string-array>
