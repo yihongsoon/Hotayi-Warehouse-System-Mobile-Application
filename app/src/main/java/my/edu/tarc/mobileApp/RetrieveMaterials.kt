@@ -14,8 +14,6 @@ import java.util.*
 
 class RetrieveMaterials : AppCompatActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_retrieve_materials)
@@ -25,8 +23,6 @@ class RetrieveMaterials : AppCompatActivity() {
 
         val btnScan = findViewById<Button>(R.id.btnScanMaterial)
         var scanStatus: Boolean? = null
-
-
 
         btnScan.setOnClickListener {
 
@@ -85,12 +81,10 @@ class RetrieveMaterials : AppCompatActivity() {
             } else {
                 Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT)
                     .show()
-
-
             }
 
-
         }else {
+
         }
 
 

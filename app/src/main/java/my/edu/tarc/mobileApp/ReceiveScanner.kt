@@ -1,6 +1,7 @@
 package my.edu.tarc.mobileApp
 
 import android.app.ProgressDialog.show
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +20,7 @@ class ReceiveScanner : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_receive_scanner)
+        setContentView(R.layout.activity_scanner)
 
         setupPermission()
         codeScanner()
@@ -42,11 +43,22 @@ class ReceiveScanner : AppCompatActivity() {
             decodeCallback = DecodeCallback {
                 runOnUiThread{
                     text.text = it.text
+
+                    var str1= text.text
+                    Log.d("QRCodeContent", str1.toString())
+
+                    val intent = Intent(this@ReceiveScanner, Receive::class.java)
+                    intent.putExtra("qrCodeContent", str1)
+
+                    intent.putExtra("scanStatus","true")
+                    startActivity(intent)
                 }
             }
             errorCallback = ErrorCallback {
                 runOnUiThread{
                     Log.e("Main", "Camera initialization error: ${it.message}")
+
+                    intent.putExtra("scanStatus","false")
                 }
             }
         }
