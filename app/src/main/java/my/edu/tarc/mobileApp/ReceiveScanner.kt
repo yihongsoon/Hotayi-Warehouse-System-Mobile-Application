@@ -1,7 +1,6 @@
 package my.edu.tarc.mobileApp
 
 import android.app.ProgressDialog.show
-import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,21 +14,20 @@ import com.budiyev.android.codescanner.*
 
 private const val CAMERA_REQUEST_CODE = 101
 
-class Scanner : AppCompatActivity() {
+class ReceiveScanner : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scanner)
+        setContentView(R.layout.activity_receive_scanner)
 
         setupPermission()
         codeScanner()
     }
 
-    public fun codeScanner(){
+    private fun codeScanner(){
         val scanner = findViewById<CodeScannerView>(R.id.ScannerView)
         val text = findViewById<TextView>(R.id.textViewScanner)
-
         codeScanner = CodeScanner(this, scanner)
         codeScanner.apply{
             camera = CodeScanner.CAMERA_BACK
@@ -40,34 +38,15 @@ class Scanner : AppCompatActivity() {
             isAutoFocusEnabled = true
             isFlashEnabled = false
 
+
             decodeCallback = DecodeCallback {
                 runOnUiThread{
                     text.text = it.text
-
-// DONT COPY HERE-->
-                var str1= text.text
-                 Log.d("QRCodeContent", str1.toString())
-
-                    val intent = Intent(this@Scanner, RetrieveMaterials::class.java)
-                    intent.putExtra("qrCodeContent", str1)
-
-                    intent.putExtra("scanStatus","true")
-                    startActivity(intent)
-
-//                    Toast.makeText(applicationContext,str1.toString()+"    added ", Toast.LENGTH_SHORT).show()
-
-
-// TO HERE//
-
                 }
-
             }
             errorCallback = ErrorCallback {
                 runOnUiThread{
                     Log.e("Main", "Camera initialization error: ${it.message}")
-// DONT COPY INI //
-                    intent.putExtra("scanStatus","false")
-// DONT COPY INI //
                 }
             }
         }
@@ -75,25 +54,19 @@ class Scanner : AppCompatActivity() {
             codeScanner.startPreview()
         }
     }
-
-
-
-
-
-
     override fun onResume(){
         super.onResume()
         codeScanner.startPreview()
     }
     override fun onPause(){
-       codeScanner.releaseResources()
+        codeScanner.releaseResources()
         super.onPause()
 
     }
 
     private fun setupPermission(){
         val permission = ContextCompat.checkSelfPermission(this,
-        android.Manifest.permission.CAMERA)
+            android.Manifest.permission.CAMERA)
 
         if(permission != PackageManager.PERMISSION_GRANTED){
             makeRequest()

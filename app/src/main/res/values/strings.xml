@@ -44,6 +44,7 @@
     <string name="receiveDate">Received Date:</string>
     <string name="receiveBy">Received By:</string>
     <string name="scan">Scan</string>
+    <string name="receiveSave">Receive</string>
     //checklist
     <string name="checklistTitle">Material Checklist</string>
     //store materials

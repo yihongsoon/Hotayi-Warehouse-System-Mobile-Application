@@ -64,13 +64,11 @@ class RetrieveMaterials : AppCompatActivity() {
             //display scanned barcode items into the text views
                 val rackId = findViewById<TextView>(R.id.txtStoreRackID)
                 val rackNo = findViewById<TextView>(R.id.txtStoreRackNo)
-                val partNo = findViewById<TextView>(R.id.txtStorePartNo)
+                val partNo = findViewById<TextView>(R.id.txtPartNo)
                 val serialNo = findViewById<TextView>(R.id.txtStoreSerialNumber)
                 val retrieveStatus = findViewById<TextView>(R.id.txtStoreStatus)
                 val rackInDate = findViewById<TextView>(R.id.txtRackInDate)
                 val qty = findViewById<TextView>(R.id.txtStoreQty)
-
-
 
                 rackId.text = displayRackId
                 rackNo.text = displayRackNo
