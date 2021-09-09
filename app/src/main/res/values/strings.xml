@@ -49,4 +49,5 @@
     //store materials
     <string name="storeTitle">Store Materials</string>
     <string name="RackInDate">Rack In Date: </string>
+
 </resources>
