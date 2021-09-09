@@ -39,7 +39,6 @@ class ReceiveScanner : AppCompatActivity() {
             isAutoFocusEnabled = true
             isFlashEnabled = false
 
-
             decodeCallback = DecodeCallback {
                 runOnUiThread{
                     text.text = it.text

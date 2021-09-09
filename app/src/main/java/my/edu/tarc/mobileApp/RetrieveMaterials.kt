@@ -29,7 +29,6 @@ class RetrieveMaterials : AppCompatActivity() {
             val intent = Intent(this, Scanner::class.java)
             startActivity(intent)
 
-
         }
 
         val intent = intent
