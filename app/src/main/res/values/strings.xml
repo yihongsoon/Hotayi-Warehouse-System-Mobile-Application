@@ -13,7 +13,7 @@
     <string name="ReportStaffID">Staff ID</string>
     <string name="ReportRackIn">Rack In</string>
     <string name="ReportRackOut">Rack Out</string>
-    <string name="ReportQR">Generate QR</string>
+    <string name="ReportPDF">Generate PDF</string>
     <string name="ReportExcel">Generate Excel</string>
     <string name="typeHere">Type Here</string>
 

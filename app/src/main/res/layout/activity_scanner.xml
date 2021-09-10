@@ -14,10 +14,10 @@
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@android:color/white"
         app:flashButtonVisible="true"
-        app:maskColor="#77000000"/>
+        app:maskColor="#77000000" />
 
     <TextView
-        android:id="@+id/textViewScanner"
+        android:id="@+id/textViewScannerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ScannerView"

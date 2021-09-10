@@ -1,13 +1,11 @@
 package my.edu.tarc.mobileApp
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -15,7 +13,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class Report : AppCompatActivity() {
 
@@ -34,7 +32,16 @@ class Report : AppCompatActivity() {
         var spinnerSearchCriteria = findViewById<Spinner>(R.id.spinner)
         searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                TODO("Not yet implemented")
+                val searchText = query!!.uppercase().toString()
+                if(searchText.isNotEmpty()){
+                    when(spinnerSearchCriteria.selectedItemPosition){
+                        0 -> search("part", searchText)
+                        1 -> search("serial", searchText)
+                        2 -> search("status", searchText)
+                        3 -> search("rackid", searchText)
+                    }
+                }
+                return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
@@ -78,7 +85,7 @@ class Report : AppCompatActivity() {
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_report, menu)
         return true
     }
@@ -88,11 +95,11 @@ class Report : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_PDF -> true
+            R.id.action_PDF -> {
+                true
+            }
             R.id.action_Excel -> true
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-
+    }*/
 }
