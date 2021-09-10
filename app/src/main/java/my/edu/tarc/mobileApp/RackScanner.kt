@@ -21,7 +21,6 @@ class RackScanner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rack_scanner)
-        setContentView(R.layout.activity_store_scanner)
         val actionbar = supportActionBar
 
         actionbar!!.title = "Rack Scanner"
