@@ -28,7 +28,7 @@ class ReceiveScanner : AppCompatActivity() {
 
     private fun codeScanner(){
         val scanner = findViewById<CodeScannerView>(R.id.ScannerView)
-        val text = findViewById<TextView>(R.id.textViewScanner)
+        val text = findViewById<TextView>(R.id.textViewScannerView)
         codeScanner = CodeScanner(this, scanner)
         codeScanner.apply{
             camera = CodeScanner.CAMERA_BACK

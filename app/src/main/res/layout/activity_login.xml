@@ -9,17 +9,20 @@
     android:visibility="visible"
     tools:context=".Login">
 
-    <ImageView
-        android:id="@+id/ivLoginLogo"
-        android:layout_width="128dp"
-        android:layout_height="138dp"
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/LoginLogo"
+        android:layout_width="198dp"
+        android:layout_height="247dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/login" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/login_logo" />
 
     <View
         android:id="@+id/divider3"
@@ -29,13 +32,13 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLoginLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/LoginLogo" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/roboto"
         android:text="LOGIN"
         android:textColor="@android:color/black"
@@ -50,7 +53,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Email"
