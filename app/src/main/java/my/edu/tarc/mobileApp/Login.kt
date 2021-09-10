@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.provider.Settings
 import android.text.TextUtils
 import android.view.View
@@ -43,10 +44,8 @@ class Login : AppCompatActivity() {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) {task ->
                     if (task.isSuccessful) {
                         hideLoading()
-                        //val emailTest = firebaseAuth.currentUser?.email.toString()
                         Toast.makeText(this, "Successfully Login", Toast.LENGTH_LONG).show()
                         startActivity(Intent(this,MainActivity::class.java))
-
                     }
                     else {
                         hideLoading()

@@ -11,51 +11,35 @@
         android:background="#FFFFFF"
         tools:context=".MainActivity">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="90dp"
-            android:text="@string/hotayi"
-            android:textSize="30sp"
-            app:fontFamily="@font/roboto_bold"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            android:layout_marginTop="50dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/hotayi" />
         <TextView
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:text="@string/hotayiSubTitle"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="161dp"
-            android:layout_height="161dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/tarclogo" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="175dp"
+            android:layout_marginTop="50dp"
             android:orientation="horizontal"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btnReceive"
                 android:layout_width="0dp"
@@ -64,9 +48,11 @@
                 android:layout_weight="1"
                 app:strokeColor="@color/black"
                 app:strokeWidth="1dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
@@ -77,16 +63,17 @@
                         android:text="@string/homepageReceive"
                         android:textSize="24sp"
                         app:fontFamily="@font/roboto_bold" />
+
                     <ImageView
                         android:id="@+id/bus"
                         android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        app:srcCompat="@drawable/receive"
-                        />
+                        app:srcCompat="@drawable/receive" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/btnStore"
                 android:layout_width="0dp"
@@ -95,9 +82,11 @@
                 android:layout_weight="1"
                 app:strokeColor="@color/black"
                 app:strokeWidth="1dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <TextView
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
@@ -108,14 +97,14 @@
                         android:text="@string/homepageStore"
                         android:textSize="24sp"
                         app:fontFamily="@font/roboto_bold" />
+
                     <ImageView
                         android:id="@+id/imageView3"
                         android:layout_width="75dp"
                         android:layout_height="75dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        app:srcCompat="@drawable/store"
-                        />
+                        app:srcCompat="@drawable/store" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
@@ -209,5 +198,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"></android.widget.Button>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

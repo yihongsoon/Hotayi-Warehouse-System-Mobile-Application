@@ -57,6 +57,7 @@
 
     //login and homepage
     <string name="hotayi">Hotayi</string>
+    <string name="hotayiFull">Hotayi Mobile Warehouse System</string>
     <string name="hotayiSubTitle">Mobile Warehouse System</string>
     <string name="homepageStore">Store</string>
     <string name="homepageReceive">Receive</string>

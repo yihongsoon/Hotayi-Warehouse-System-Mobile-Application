@@ -24,18 +24,20 @@
         <activity android:name=".Login"></activity>
         <activity android:name=".Scanner" />
         <activity android:name=".StoreMaterials" android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".retrieve_checklist" />
+        <activity android:name=".RetrieveChecklist" />
         <activity android:name=".RetrieveMaterials" />
         <activity android:name=".Receive" />
         <activity
             android:name=".Report"
             android:windowSoftInputMode="adjustNothing" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
         </activity>
 
         <meta-data

@@ -1,13 +1,14 @@
 package my.edu.tarc.mobileApp
 
+import android.animation.Animator
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -20,6 +21,7 @@ class Report : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var arrayList: ArrayList<ReportClass>
     private lateinit var searchView: SearchView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report)
@@ -67,6 +69,8 @@ class Report : AppCompatActivity() {
 
     private fun search(criteria:String, search:String) {
         arrayList.clear()
+        val lottieempty = findViewById<View>(R.id.lottieEmpty)
+        lottieempty.visibility = View.GONE
         val query = FirebaseDatabase.getInstance().reference.child("Material").orderByChild(criteria).startAt(search).endAt(search + "\uf8ff")
         query.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -81,11 +85,14 @@ class Report : AppCompatActivity() {
                     arrayList.clear()
                     recyclerView.adapter = ReportAdapter(arrayList)
                     Toast.makeText(applicationContext,"Empty Results",Toast.LENGTH_SHORT).show()
+                    val lottieempty = findViewById<View>(R.id.lottieEmpty)
+                    lottieempty.visibility = View.VISIBLE
                 }
 
             }
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                val lottieError = findViewById<View>(R.id.lottieError)
+                lottieError.visibility = View.VISIBLE
             }
         })
     }
@@ -112,4 +119,5 @@ class Report : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }*/
+
 }
