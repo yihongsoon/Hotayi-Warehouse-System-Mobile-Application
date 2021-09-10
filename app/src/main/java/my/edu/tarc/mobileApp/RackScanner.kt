@@ -1,5 +1,6 @@
 package my.edu.tarc.mobileApp
 
+import android.app.Dialog
 import android.app.ProgressDialog.show
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -20,7 +21,11 @@ class RackScanner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rack_scanner)
+        setContentView(R.layout.activity_store_scanner)
+        val actionbar = supportActionBar
 
+        actionbar!!.title = "Rack Scanner"
+        actionbar.setDisplayHomeAsUpEnabled(true)
         val intent = intent
 
         val scanningStatus = intent.getStringExtra("scanStatus")
@@ -111,4 +116,10 @@ class RackScanner : AppCompatActivity() {
             }
         }
     }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+
 }

@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -79,6 +80,10 @@ class StoreMaterials : AppCompatActivity() {
             else{
                 Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT)
                     .show()
+            }
+
+            btnSave.setOnClickListener {
+             val dbControl = FirebaseDatabase.getInstance().getReference()
             }
 
         }
