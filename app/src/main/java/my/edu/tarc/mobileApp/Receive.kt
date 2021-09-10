@@ -18,6 +18,9 @@ class Receive : AppCompatActivity(){
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receive)
+        val actionbar = supportActionBar
+        actionbar!!.title = "Retrieve Materials"
+        actionbar.setDisplayHomeAsUpEnabled(true)
 
         val btnScan = findViewById<Button>(R.id.buttonScan)
 
@@ -58,6 +61,10 @@ class Receive : AppCompatActivity(){
         }else{
 
         }
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 }

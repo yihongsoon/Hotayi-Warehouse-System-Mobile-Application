@@ -19,6 +19,11 @@ class StoreMaterials : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_materials)
 
+        val actionbar = supportActionBar
+
+        actionbar!!.title = "Store"
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
         val btnScan = findViewById<Button>(R.id.btnScanMaterial)
         val btnSave = findViewById<Button>(R.id.btnStoreSave)
 
@@ -78,6 +83,11 @@ class StoreMaterials : AppCompatActivity() {
 
         }
 
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
 

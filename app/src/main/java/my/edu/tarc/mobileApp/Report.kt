@@ -24,6 +24,11 @@ class Report : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report)
 
+        val actionbar = supportActionBar
+
+        actionbar!!.title = "Report"
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
         recyclerView = findViewById(R.id.recycleViewReport)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
@@ -83,6 +88,11 @@ class Report : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
