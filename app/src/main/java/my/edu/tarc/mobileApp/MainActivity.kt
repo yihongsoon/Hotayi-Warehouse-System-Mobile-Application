@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -14,11 +15,11 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val btnStore = findViewById<Button>(R.id.btnStore)
-        val btnReceive = findViewById<Button>(R.id.btnReceive)
-        val btnRetrieve = findViewById<Button>(R.id.btnRetrieve)
-        val btnReport = findViewById<Button>(R.id.btnReport)
-        val btnLogOut = findViewById<Button>(R.id.buttonLogOut)
+        val btnStore = findViewById<CardView>(R.id.btnStore)
+        val btnReceive = findViewById<CardView>(R.id.btnReceive)
+        val btnRetrieve = findViewById<CardView>(R.id.btnRetrieve)
+        val btnReport = findViewById<CardView>(R.id.btnReport)
+        val btnLogOut = findViewById<Button>(R.id.btnLogOut)
 
         btnStore.setOnClickListener{
             val intent = Intent(this, StoreMaterials::class.java)

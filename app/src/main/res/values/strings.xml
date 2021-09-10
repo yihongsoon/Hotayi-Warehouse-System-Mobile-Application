@@ -51,4 +51,14 @@
     <string name="storeTitle">Store Materials</string>
     <string name="RackInDate">Rack In Date: </string>
 
+
+    //login and homepage
+    <string name="hotayi">Hotayi</string>
+    <string name="hotayiSubTitle">Mobile Warehouse System</string>
+    <string name="homepageStore">Store</string>
+    <string name="homepageReceive">Receive</string>
+    <string name="homepageRetrieve">Retrieve</string>
+    <string name="homepageReport">Report</string>
+    <string name="homepageLogOut">Log Out</string>
+    <string name="logIn">Log In</string>
 </resources>
