@@ -26,7 +26,7 @@ class ReceiveScanner : AppCompatActivity() {
         codeScanner()
     }
 
-    private fun codeScanner(){
+    public fun codeScanner(){
         val scanner = findViewById<CodeScannerView>(R.id.ScannerView)
         val text = findViewById<TextView>(R.id.textViewScannerView)
         codeScanner = CodeScanner(this, scanner)
@@ -44,10 +44,10 @@ class ReceiveScanner : AppCompatActivity() {
                     text.text = it.text
 
                     var str1= text.text
-                    Log.d("QRCodeContent", str1.toString())
+                    Log.d("ReceiveCodeContent", str1.toString())
 
                     val intent = Intent(this@ReceiveScanner, Receive::class.java)
-                    intent.putExtra("qrCodeContent", str1)
+                    intent.putExtra("receiveCodeContent", str1)
 
                     intent.putExtra("scanStatus","true")
                     startActivity(intent)

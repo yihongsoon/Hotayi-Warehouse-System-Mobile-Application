@@ -31,8 +31,6 @@ class Login : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.eTEmail)
         val password = findViewById<EditText>(R.id.eTPass)
 
-
-
         btnLogin.setOnClickListener{
 
             var email: String = email.text.toString()
