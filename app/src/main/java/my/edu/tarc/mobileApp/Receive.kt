@@ -8,16 +8,18 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-//import com.google.firebase.auth.FirebaseAuth
-//import com.google.firebase.database.FirebaseDatabase
-//import com.google.firebase.ktx.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.*
 
 class Receive : AppCompatActivity(){
 
+    private lateinit var firebaseAuth : FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_receive)
@@ -33,10 +35,10 @@ class Receive : AppCompatActivity(){
         }
 
         val intent = intent
-        val qrTest = intent.getStringExtra("receiveCodeContent")
+        val partCode = intent.getStringExtra("partCodeContent")
         val scanningStatus = intent.getStringExtra("scanStatus")
-        val randomNumber = (100000000..999999999).random()
 
+        val emailStaff = firebaseAuth.currentUser?.email.toString()
         //val database = FirebaseDatabase.getInstance()
         //val myReference = database.getReference("Material")
 
@@ -45,18 +47,21 @@ class Receive : AppCompatActivity(){
                 myReference.child(Material.serialNo.text.toString()).child("serial").setValue(Material.serial)*/
 
         if(scanningStatus == "true"){
-            val split = qrTest?.split("-")
+            val splitPart = partCode?.split("-")
 
-            val result = split?.count()
-            Log.d("Count Part", result.toString())
+            val resultPart = splitPart?.count()
+            Log.d("CountPart", resultPart.toString())
 
-            if(result == 2){
-                val showPartNo = split?.get(0)
-                val showQty = split?.get(1)
+            if(resultPart == 2){
+                val showPartNo = splitPart?.get(0)
+                val showQty = splitPart?.get(1)
+
+                val randomNumber = (100000000..999999999).random()
 
                 val txtDate = findViewById<TextView>(R.id.txtRecDate)
                 val df = SimpleDateFormat("dd/MM/yyyy")
                 val currentDate = df.format(Calendar.getInstance().time)
+
                 val partNo = findViewById<TextView>(R.id.txtPartNo)
                 val qty = findViewById<TextView>(R.id.txtQuantity)
                 val status = findViewById<TextView>(R.id.txtStatus)
@@ -67,11 +72,11 @@ class Receive : AppCompatActivity(){
                 partNo.text = showPartNo
                 qty.text = showQty
                 status.text = "RECEIVED"
-                serialNo.text = "S"+ randomNumber
-                staffID.text = ""
+                serialNo.text = "HWS"+ randomNumber.toString()
+                staffID.text = emailStaff
 
             }else{
-                Toast.makeText(applicationContext, "Please scan again!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT).show()
             }
         }else{
 

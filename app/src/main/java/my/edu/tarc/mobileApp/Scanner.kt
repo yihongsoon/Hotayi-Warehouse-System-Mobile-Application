@@ -42,7 +42,6 @@ class Scanner : AppCompatActivity() {
                 runOnUiThread{
                     text.text = it.text
 
-
                     var str1= text.text
                     Log.d("QRCodeContent", str1.toString())
 
@@ -51,8 +50,6 @@ class Scanner : AppCompatActivity() {
 
                     intent.putExtra("scanStatus","true")
                     startActivity(intent)
-
-
 
                 }
 
