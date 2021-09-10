@@ -51,7 +51,6 @@ class Receive : AppCompatActivity(){
             Log.d("Count Part", result.toString())
 
             if(result == 2){
-
                 val showPartNo = split?.get(0)
                 val showQty = split?.get(1)
 
