@@ -26,6 +26,7 @@ class StoreMaterials : AppCompatActivity() {
         val actionbar = supportActionBar
 
         actionbar!!.title = "Store"
+
         actionbar.setDisplayHomeAsUpEnabled(true)
 
         val btnScan = findViewById<Button>(R.id.btnScanMaterial)
