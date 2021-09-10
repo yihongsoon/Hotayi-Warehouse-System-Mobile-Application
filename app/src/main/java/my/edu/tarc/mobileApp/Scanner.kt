@@ -1,12 +1,10 @@
 package my.edu.tarc.mobileApp
 
-import android.app.ProgressDialog.show
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -28,7 +26,7 @@ class Scanner : AppCompatActivity() {
 
     public fun codeScanner(){
         val scanner = findViewById<CodeScannerView>(R.id.ScannerView)
-        val text = findViewById<TextView>(R.id.textViewScanner)
+        val text = findViewById<TextView>(R.id.textViewScannerView)
 
         codeScanner = CodeScanner(this, scanner)
         codeScanner.apply{
@@ -45,8 +43,8 @@ class Scanner : AppCompatActivity() {
                     text.text = it.text
 
 // DONT COPY HERE-->
-                var str1= text.text
-                 Log.d("QRCodeContent", str1.toString())
+                    var str1= text.text
+                    Log.d("QRCodeContent", str1.toString())
 
                     val intent = Intent(this@Scanner, RetrieveMaterials::class.java)
                     intent.putExtra("qrCodeContent", str1)
@@ -86,14 +84,14 @@ class Scanner : AppCompatActivity() {
         codeScanner.startPreview()
     }
     override fun onPause(){
-       codeScanner.releaseResources()
+        codeScanner.releaseResources()
         super.onPause()
 
     }
 
     private fun setupPermission(){
         val permission = ContextCompat.checkSelfPermission(this,
-        android.Manifest.permission.CAMERA)
+            android.Manifest.permission.CAMERA)
 
         if(permission != PackageManager.PERMISSION_GRANTED){
             makeRequest()
