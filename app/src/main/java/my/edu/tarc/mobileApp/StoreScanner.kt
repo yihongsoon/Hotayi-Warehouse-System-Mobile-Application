@@ -1,5 +1,6 @@
 package my.edu.tarc.mobileApp
 
+import android.app.Dialog
 import android.app.ProgressDialog.show
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -16,10 +17,15 @@ import com.budiyev.android.codescanner.*
 private const val CAMERA_REQUEST_CODE = 101
 
 class StoreScanner : AppCompatActivity() {
+
     private lateinit var codeScanner: CodeScanner
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_store_scanner)
+        val actionbar = supportActionBar
+
+        actionbar!!.title = "Product Scanner"
+        actionbar.setDisplayHomeAsUpEnabled(true)
 
         setupPermission()
         codeScanner()
@@ -50,6 +56,7 @@ class StoreScanner : AppCompatActivity() {
 
                     intent.putExtra("scanStatus","true")
                     startActivity(intent)
+
                 }
             }
             errorCallback = ErrorCallback {
@@ -99,4 +106,9 @@ class StoreScanner : AppCompatActivity() {
             }
         }
     }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
 }
