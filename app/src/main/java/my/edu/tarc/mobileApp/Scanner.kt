@@ -42,7 +42,7 @@ class Scanner : AppCompatActivity() {
                 runOnUiThread{
                     text.text = it.text
 
-// DONT COPY HERE-->
+
                     var str1= text.text
                     Log.d("QRCodeContent", str1.toString())
 
@@ -52,10 +52,7 @@ class Scanner : AppCompatActivity() {
                     intent.putExtra("scanStatus","true")
                     startActivity(intent)
 
-//                    Toast.makeText(applicationContext,str1.toString()+"    added ", Toast.LENGTH_SHORT).show()
 
-
-// TO HERE//
 
                 }
 
@@ -63,9 +60,7 @@ class Scanner : AppCompatActivity() {
             errorCallback = ErrorCallback {
                 runOnUiThread{
                     Log.e("Main", "Camera initialization error: ${it.message}")
-// DONT COPY INI //
-                    intent.putExtra("scanStatus","false")
-// DONT COPY INI //
+
                 }
             }
         }
