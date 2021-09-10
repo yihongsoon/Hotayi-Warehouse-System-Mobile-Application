@@ -25,6 +25,7 @@ class RetrieveMaterials : AppCompatActivity() {
         actionbar.setDisplayHomeAsUpEnabled(true)
 
         val btnScan = findViewById<Button>(R.id.btnScanMaterial)
+        val btnCheckList = findViewById<Button>(R.id.btnCheckList)
         var scanStatus: Boolean? = null
 
 
@@ -36,6 +37,12 @@ class RetrieveMaterials : AppCompatActivity() {
 
 
         }
+
+        btnCheckList.setOnClickListener {
+            val intent = Intent(this, RetrieveChecklist::class.java)
+            startActivity(intent)
+        }
+
 
         val intent = intent
         val qrTest = intent.getStringExtra("qrCodeContent")
@@ -57,7 +64,6 @@ class RetrieveMaterials : AppCompatActivity() {
                             var rackid =
                                 userSnapshot.child("rackid").getValue(String::class.java)
                                     .toString()
-
 
                             var rackNumber =
                                 userSnapshot.child("rackno").getValue(String::class.java)
@@ -95,7 +101,12 @@ class RetrieveMaterials : AppCompatActivity() {
 
                                 db.child("status").setValue("RETRIEVED")
 
-                            } else {
+                            } else if (matStatus== "STORED") {
+
+                                db.child("status").setValue("RETRIEVED")
+
+                            }  else{
+
                                 Toast.makeText(
                                     applicationContext,
                                     "Already retrieved!",
@@ -184,6 +195,13 @@ class RetrieveMaterials : AppCompatActivity() {
 //        }
 
 
+                    }else{
+                        Toast.makeText(
+                            applicationContext,
+                            "No such material exists",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
                     }
                 }
 
