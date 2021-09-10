@@ -32,8 +32,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/partNo"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewSerialNo"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <TextView
@@ -43,8 +42,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/serialNo"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewQuantity"
         app:layout_constraintTop_toBottomOf="@+id/textViewPartNo" />
 
     <TextView
@@ -54,8 +52,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/quantity"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewStatus"
         app:layout_constraintTop_toBottomOf="@+id/textViewSerialNo" />
 
     <TextView
@@ -65,8 +62,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/statusReceive"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewRecDate"
         app:layout_constraintTop_toBottomOf="@+id/textViewQuantity" />
 
     <TextView
@@ -87,8 +83,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/receiveBy"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewRecDate"
         app:layout_constraintTop_toBottomOf="@+id/textViewRecDate" />
 
     <Button
@@ -109,8 +104,8 @@
         android:id="@+id/txtPartNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textViewPartNo"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textViewPartNo" />
@@ -119,8 +114,8 @@
         android:id="@+id/txtSerialNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textViewSerialNo"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textViewSerialNo" />
@@ -129,8 +124,7 @@
         android:id="@+id/txtQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewQuantity"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textViewQuantity" />
@@ -139,8 +133,7 @@
         android:id="@+id/txtStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewStatus"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textViewStatus" />
@@ -149,8 +142,7 @@
         android:id="@+id/txtRecDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewRecDate"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textViewRecDate" />
@@ -159,8 +151,7 @@
         android:id="@+id/txtRecBy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewRecBy"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textViewRecBy" />
