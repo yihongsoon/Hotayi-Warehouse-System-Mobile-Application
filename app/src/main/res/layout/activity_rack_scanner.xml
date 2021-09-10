@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Scanner">
+    tools:context=".RackScanner">
 
     <com.budiyev.android.codescanner.CodeScannerView
         android:id="@+id/ScannerView"
@@ -14,10 +14,10 @@
         app:autoFocusButtonVisible="true"
         app:flashButtonColor="@android:color/white"
         app:flashButtonVisible="true"
-        app:maskColor="#77000000" />
+        app:maskColor="#77000000"/>
 
     <TextView
-        android:id="@+id/textViewScannerView"
+        android:id="@+id/textViewScanner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ScannerView"
@@ -26,8 +26,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:text="@string/scanProduct"
+        android:text="@string/scanRack"
         android:textColor="@android:color/black" />
-
 
 </RelativeLayout>

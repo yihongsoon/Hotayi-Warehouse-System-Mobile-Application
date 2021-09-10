@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
-        <activity android:name=".ReceiveScanner"></activity>
+        <activity android:name=".RackScanner"></activity>
+        <activity android:name=".StoreScanner" />
+        <activity android:name=".ReceiveScanner" />
         <activity android:name=".Login"></activity>
         <activity android:name=".Scanner" />
         <activity android:name=".StoreMaterials" />
