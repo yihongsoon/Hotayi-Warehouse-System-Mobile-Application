@@ -45,8 +45,10 @@ class Login : AppCompatActivity() {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) {task ->
                     if (task.isSuccessful) {
                         hideLoading()
+                        //val emailTest = firebaseAuth.currentUser?.email.toString()
                         Toast.makeText(this, "Successfully Login", Toast.LENGTH_LONG).show()
                         startActivity(Intent(this,MainActivity::class.java))
+
                     }
                     else {
                         hideLoading()
