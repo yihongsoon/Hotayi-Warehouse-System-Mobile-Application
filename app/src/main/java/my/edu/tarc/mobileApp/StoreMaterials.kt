@@ -138,7 +138,6 @@ class StoreMaterials : AppCompatActivity() {
                 dbControl.child("rackid").setValue(storeRackID.text)
                 dbControl.child("rackno").setValue(storeRackNo.text)
                 dbControl.child("storeby").setValue(storedBy.text)
-                dbControl.child("rackout").setValue("")
                 dbControl.child("rackin").setValue(currentDate)
                 if(storeStatus.text == "STORED") {
                     Toast.makeText(applicationContext,"This material has already been stored",Toast.LENGTH_SHORT).show()
