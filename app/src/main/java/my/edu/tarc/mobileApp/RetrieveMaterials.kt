@@ -144,7 +144,7 @@ class RetrieveMaterials : AppCompatActivity() {
                             }
 
                             when {
-                                matStatus == "RECEIVE" -> db.child("status")
+                                matStatus == "RECEIVED" -> db.child("status")
                                     .setValue("RETRIEVED")
 
                                 matStatus == "STORED" -> db.child("status")
