@@ -33,8 +33,10 @@
     <string name="SerialNum">Serial No:</string>
     <string name="RackOutDate">Rack Out Date: </string>
     <string name="quantity">Quantity:</string>
-    <string name="status">Status</string>
+    <string name="status">Status:</string>
     <string name="checkList">View Checklist</string>
+    <string name="retrieveBy">Retrieved By:</string>
+
     //receive
     <string name="material">Receive Materials</string>
     <string name="partNo">Part No.:</string>

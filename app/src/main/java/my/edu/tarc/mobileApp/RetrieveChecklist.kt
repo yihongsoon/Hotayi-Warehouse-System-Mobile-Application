@@ -1,13 +1,17 @@
 package my.edu.tarc.mobileApp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.R.attr.key
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.SparseBooleanArray
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ListView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 
 class RetrieveChecklist : AppCompatActivity() {
 
@@ -16,6 +20,7 @@ class RetrieveChecklist : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_retrieve_checklist)
+
         val actionbar = supportActionBar
         actionbar!!.title = "Checklist for Materials"
         actionbar.setDisplayHomeAsUpEnabled(true)
@@ -23,7 +28,6 @@ class RetrieveChecklist : AppCompatActivity() {
         val btnAddTodo= findViewById<Button>(R.id.btnAddTodo)
         val etTodoTitle = findViewById<EditText>(R.id.etTodoTitle)
         val btnDeleteDoneTodos = findViewById<Button>(R.id.btnDeleteDoneTodos)
-
 
         todoAdapter = TodoAdapter(mutableListOf())
 
@@ -41,10 +45,26 @@ class RetrieveChecklist : AppCompatActivity() {
         btnDeleteDoneTodos.setOnClickListener {
             todoAdapter.deleteDoneTodos()
         }
+
     }
+
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
+
         return true
     }
-}
+
+
+
+
+    }
+
+
+
+    
+
+
+
+

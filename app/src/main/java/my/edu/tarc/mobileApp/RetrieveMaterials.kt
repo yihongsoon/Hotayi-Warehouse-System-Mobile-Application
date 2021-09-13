@@ -3,18 +3,29 @@ package my.edu.tarc.mobileApp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.renderscript.Sampler
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class RetrieveMaterials : AppCompatActivity() {
+    var rackid = ""
+    var rackNumber = ""
+    var partNum = ""
+    var matStatus= ""
+    var qty =""
+    var staffid = ""
+    var rackOutDate = ""
+    var retrieveby = ""
+    lateinit var listener: ValueEventListener
+    private lateinit var firebaseAuth : FirebaseAuth
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,11 +34,12 @@ class RetrieveMaterials : AppCompatActivity() {
         val actionbar = supportActionBar
         actionbar!!.title = "Retrieve Materials"
         actionbar.setDisplayHomeAsUpEnabled(true)
+        firebaseAuth = FirebaseAuth.getInstance()
+
 
         val btnScan = findViewById<Button>(R.id.btnScanMaterial)
         val btnCheckList = findViewById<Button>(R.id.btnCheckList)
         var scanStatus: Boolean? = null
-
 
 
         btnScan.setOnClickListener {
@@ -49,44 +61,74 @@ class RetrieveMaterials : AppCompatActivity() {
         val scanningStatus = intent.getStringExtra("scanStatus")
         val sdf = SimpleDateFormat("dd/M/yyyy")
         val currentDate = sdf.format(Date())
+        val rackidView = findViewById<TextView>(R.id.txtStoreRackID)
+        val rackNumView = findViewById<TextView>(R.id.txtStoreRackNo)
+        val partNumView = findViewById<TextView>(R.id.txtPartNo)
+        val serialView = findViewById<TextView>(R.id.txtStoreSerialNumber)
+        val statusView = findViewById<TextView>(R.id.txtStoreStatus)
+        val rackoutView = findViewById<TextView>(R.id.txtRackOutDate)
+        val qtyView = findViewById<TextView>(R.id.txtStoreQty)
+        val staffidView = findViewById<TextView>(R.id.txtViewStaff)
+        val emailStaff = firebaseAuth.currentUser?.email.toString()
+
 
         if (scanningStatus == "true") {
+
+
             val query =
                 FirebaseDatabase.getInstance().reference.child("Material").orderByChild("serial")
-                    .startAt(qrTest).endAt(qrTest + "\uf8ff")
+                    .startAt(qrTest).endAt(qrTest )
+
+            val db = FirebaseDatabase.getInstance().reference.child("Material")
+                .child(qrTest.toString())
 
 
-            query.addValueEventListener(object : ValueEventListener {
+        listener=  query.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         for (userSnapshot in snapshot.children) {
 
-                            var rackid =
+                            rackid =
                                 userSnapshot.child("rackid").getValue(String::class.java)
                                     .toString()
 
-                            var rackNumber =
+                            rackNumber =
                                 userSnapshot.child("rackno").getValue(String::class.java)
                                     .toString()
 
-                            var partNum =
+                            partNum =
                                 userSnapshot.child("part").getValue(String::class.java)
                                     .toString()
 
-                            var matStatus =
+                            matStatus =
                                 userSnapshot.child("status").getValue(String::class.java)
                                     .toString()
 
 
-                            var qty = userSnapshot.child("qty").getValue(String::class.java)
+                            qty = userSnapshot.child("qty").getValue(String::class.java)
                                 .toString()
 
-                            val db = FirebaseDatabase.getInstance().reference.child("Material")
-                                .child(qrTest.toString())
+                            staffid = userSnapshot.child("staffid").getValue(String::class.java)
+                                .toString()
+
+                            rackOutDate = userSnapshot.child("rackout").getValue(String::class.java)
+                                .toString()
+
+                            retrieveby = userSnapshot.child("retrieveby").getValue(String::class.java)
+                                .toString()
 
 
                             if (qty == "1") {
                                 db.child("qty").setValue("0")
+                                db.child("rackout").setValue(currentDate)
+                                db.child("staffid").setValue(staffid)
+                                db.child("retrieveby").setValue((emailStaff))
+                                db.child("rackin").setValue("")
+
+                                rackOutDate = userSnapshot.child("rackout").getValue(String::class.java)
+                                    .toString()
+
+                                Log.d("Quantity", qty)
 
                             } else {
                                 Toast.makeText(
@@ -95,105 +137,40 @@ class RetrieveMaterials : AppCompatActivity() {
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
+
+                                Log.d("Quantity 2", qty)
+
+
                             }
 
-                            if (matStatus == "RECEIVE") {
+                            when {
+                                matStatus == "RECEIVE" -> db.child("status")
+                                    .setValue("RETRIEVED")
 
-                                db.child("status").setValue("RETRIEVED")
+                                matStatus == "STORED" -> db.child("status")
+                                    .setValue("RETRIEVED")
 
-                            } else if (matStatus== "STORED") {
 
-                                db.child("status").setValue("RETRIEVED")
 
-                            }  else{
-
-                                Toast.makeText(
+                                else -> Toast.makeText(
                                     applicationContext,
                                     "Already retrieved!",
                                     Toast.LENGTH_SHORT
                                 )
                                     .show()
+
                             }
 
-                            db.child("rackout").setValue(currentDate)
-
-                            var rackOutDate =
-                                userSnapshot.child("rackout").getValue(String::class.java)
-                                    .toString()
-
-
-                            val rackidView = findViewById<TextView>(R.id.txtStoreRackID)
-                            val rackNumView = findViewById<TextView>(R.id.txtStoreRackNo)
-                            val partNumView = findViewById<TextView>(R.id.txtPartNo)
-                            val serialView = findViewById<TextView>(R.id.txtStoreSerialNumber)
-                            val statusView = findViewById<TextView>(R.id.txtStoreStatus)
-                            val rackoutView = findViewById<TextView>(R.id.txtRackOutDate)
-                            val qtyView = findViewById<TextView>(R.id.txtStoreQty)
-
-                            rackidView.text = rackid
-                            rackNumView.text = rackNumber
-                            partNumView.text = partNum
-                            serialView.text = qrTest.toString()
-                            statusView.text = matStatus
-                            rackoutView.text = rackOutDate
-                            qtyView.text = qty
-
+                                rackidView.text = rackid
+                                rackNumView.text = rackNumber
+                                partNumView.text = partNum
+                                serialView.text = qrTest.toString()
+                                statusView.text = matStatus
+                                rackoutView.text = rackOutDate
+                                qtyView.text = qty
+                                staffidView.text = retrieveby
 
                         }
-
-
-
-
-//        if (scanningStatus == "true") {
-//
-//
-//            val split = qrTest?.split(",")
-//            //VALIDATION OF BARCODE ITEMS
-//            val result = split?.count()
-//            Log.d("Count", result.toString())
-//
-//            if (result == 4) {
-//
-//                val displayRackId = split?.get(0)
-//
-//                val displayRackNo = split?.get(1)
-//
-//                val displayPartNo = split?.get(2)
-//
-//                val displaySerialNo = split?.get(3)
-//
-//                //display scanned barcode items into the text views
-//                val rackId = findViewById<TextView>(R.id.txtStoreRackID)
-//                val rackNo = findViewById<TextView>(R.id.txtStoreRackNo)
-//                val partNo = findViewById<TextView>(R.id.txtPartNo)
-//                val serialNo = findViewById<TextView>(R.id.txtStoreSerialNumber)
-//                val retrieveStatus = findViewById<TextView>(R.id.txtStoreStatus)
-//                val rackInDate = findViewById<TextView>(R.id.txtRackInDate)
-//                val qty = findViewById<TextView>(R.id.txtStoreQty)
-//
-//                rackId.text = displayRackId
-//                rackNo.text = displayRackNo
-//                partNo.text = displayPartNo
-//                serialNo.text = displaySerialNo
-//                retrieveStatus.text = "RETRIEVED"
-//
-//                val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
-//                val currentDate = sdf.format(Date())
-//
-//                rackInDate.text = currentDate
-//                qty.text = "1"
-//
-//            } else {
-//                Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT)
-//                    .show()
-//
-//
-//            }
-//
-//
-//        }else {
-//        }
-
 
                     }else{
                         Toast.makeText(
@@ -203,16 +180,29 @@ class RetrieveMaterials : AppCompatActivity() {
                         )
                             .show()
                     }
+
+                    query.removeEventListener(this)
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    query.removeEventListener(this)
                 }
+
 
             })
 
         }
+
+
+
+
     }
+
+
+
+
+
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
