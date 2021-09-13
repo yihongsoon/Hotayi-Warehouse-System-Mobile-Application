@@ -26,7 +26,7 @@
         <activity android:name=".StoreMaterials" android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".RetrieveChecklist" />
         <activity android:name=".RetrieveMaterials" />
-        <activity android:name=".Receive" />
+        <activity android:name=".Receive" android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".Report"
             android:windowSoftInputMode="adjustNothing" />

@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".Receive">
 
+    <android.widget.Button
+        android:id="@+id/buttonGenerate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/blackgradient_background"
+        android:fontFamily="@font/roboto_bold"
+        android:padding="16dp"
+        android:text="@string/generate"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></android.widget.Button>
+
     <View
         android:id="@+id/topView"
         android:layout_width="0dp"
@@ -43,7 +59,7 @@
         android:fontFamily="@font/roboto_bold"
         android:text="@string/material"
         android:textColor="#FFFFFF"
-        android:textSize="34sp"
+        android:textSize="30sp"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,19 +75,19 @@
         android:id="@+id/textViewPartNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:text="@string/partNo"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textViewSerialNo"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewMaterial" />
 
     <TextView
         android:id="@+id/textViewSerialNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:text="@string/serialNo"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textViewQuantity"
         app:layout_constraintTop_toBottomOf="@+id/textViewPartNo" />
 
@@ -79,9 +95,9 @@
         android:id="@+id/textViewQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:text="@string/quantity"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textViewStatus"
         app:layout_constraintTop_toBottomOf="@+id/textViewSerialNo" />
 
@@ -89,9 +105,9 @@
         android:id="@+id/textViewStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:text="@string/statusReceive"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textViewRecDate"
         app:layout_constraintTop_toBottomOf="@+id/textViewQuantity" />
 
@@ -99,9 +115,9 @@
         android:id="@+id/textViewRecDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:text="@string/receiveDate"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewStatus" />
@@ -110,9 +126,9 @@
         android:id="@+id/textViewRecBy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
         android:text="@string/receiveBy"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textViewRecDate"
         app:layout_constraintTop_toBottomOf="@+id/textViewRecDate" />
 
@@ -121,24 +137,22 @@
         android:id="@+id/buttonScan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/blackgradient_background"
         android:fontFamily="@font/roboto_bold"
         android:padding="16dp"
-        android:text="Scan"
+        android:text="@string/scan"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRecBy"></android.widget.Button>
+        app:layout_constraintBottom_toTopOf="@+id/buttonGenerate"
+        app:layout_constraintEnd_toEndOf="@+id/buttonGenerate"
+        app:layout_constraintStart_toStartOf="@+id/buttonGenerate"></android.widget.Button>
 
     <TextView
         android:id="@+id/txtPartNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textViewPartNo"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -149,6 +163,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textViewSerialNo"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -159,6 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewQuantity"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textViewQuantity" />
@@ -168,6 +184,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewStatus"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textViewStatus" />
@@ -177,6 +194,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewRecDate"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textViewRecDate" />
@@ -186,21 +204,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewRecBy"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textViewRecBy" />
 
-    <View
-        android:id="@+id/divider"
+    <ImageView
+        android:id="@+id/imageViewBarcode"
         android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:background="?android:attr/listDivider"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonScan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMaterial" />
+        app:layout_constraintTop_toBottomOf="@+id/txtRecBy" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

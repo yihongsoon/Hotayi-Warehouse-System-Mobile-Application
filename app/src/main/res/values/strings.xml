@@ -43,8 +43,9 @@
     <string name="statusReceive">Status:</string>
     <string name="receiveDate">Received Date:</string>
     <string name="receiveBy">Received By:</string>
-    <string name="scan">Scan</string>
+    <string name="scan">Scan Material</string>
     <string name="receiveSave">Receive</string>
+    <string name="generate">Generate Barcode</string>
     //checklist
     <string name="checklistTitle">Material Checklist</string>
     //store materials
