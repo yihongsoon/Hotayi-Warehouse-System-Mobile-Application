@@ -21,7 +21,7 @@ import com.budiyev.android.codescanner.BarcodeUtils.encodeBitmap
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.common.BitMatrix
@@ -35,11 +35,12 @@ import java.util.*
 
 class Receive : AppCompatActivity(){
 
+    private lateinit var filePath:Uri
     private lateinit var firebaseAuth : FirebaseAuth
     private lateinit var preferences: SharedPreferences
-    private lateinit var filePath: Uri
     private val binding get() = _binding!!
     private var _binding: ActivityStoreMaterialsBinding? = null
+    //private val imageBarcode = findViewById<ImageView>(R.id.imageViewBarcode)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -108,7 +109,7 @@ class Receive : AppCompatActivity(){
                     val storeby = ""
                     val retrieveby = ""
 
-                    /*val Material = Material(serial=serial.text.toString(),part=partNo.text.toString(), qty = qty.text.toString(),
+                    val Material = Material(serial=serial.text.toString(),part=partNo.text.toString(), qty = qty.text.toString(),
                         receivedate=txtDate.text.toString(),status=status.text.toString(),staffid=staffID.text.toString(),storeby=storeby.toString(),
                         retrieveby=retrieveby.toString(), rackid=rackid.toString(),rackno=rackno.toString(),rackin=rackin.toString(),
                         rackout=rackout.toString(),barcodepic=serial.text.toString()+".jpg")
@@ -123,7 +124,7 @@ class Receive : AppCompatActivity(){
                     myReference.child(Material.serial.toString()).child("status").setValue(Material.status)
                     myReference.child(Material.serial.toString()).child("receiveby").setValue(Material.staffid)
                     myReference.child(Material.serial.toString()).child("storeby").setValue(Material.storeby)
-                    myReference.child(Material.serial.toString()).child("retrieveby").setValue(Material.retrieveby)*/
+                    myReference.child(Material.serial.toString()).child("retrieveby").setValue(Material.retrieveby)
                 
             }else{
                 Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT).show()
@@ -135,6 +136,10 @@ class Receive : AppCompatActivity(){
         val buttonGenerate = findViewById<Button>(R.id.buttonGenerate)
 
         buttonGenerate.setOnClickListener(){
+            /*val getContent = registerForActivityResult(ActivityResultContracts.GetContent()){
+                imageBarcode.setImageURI(it)
+                filePath = it
+            }*/
             //generate barcode
             val serialText = serial.text.toString()
             val width = 450
@@ -153,8 +158,13 @@ class Receive : AppCompatActivity(){
             }
             imageBarcode.setImageBitmap(bitmap)
 
-            //val fileName = serial.text.toString()+".jpg"
-            //val storage = Firebase.storage("gs://mobileapp-49132.appspot.com/")
+            imageBarcode.setImageURI(filePath)
+            val fileName = serial.text.toString()+".jpg"
+            val storage = Firebase.storage("gs://mobileapp-49132.appspot.com/")
+            val storageReference = storage.reference.child("Material").child(fileName)
+            storageReference.putFile(filePath).addOnSuccessListener {
+                Toast.makeText(applicationContext,"Barcode Uploaded",Toast.LENGTH_SHORT).show()
             }
         }
     }
+}
