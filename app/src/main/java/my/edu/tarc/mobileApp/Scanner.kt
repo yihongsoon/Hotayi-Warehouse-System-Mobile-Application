@@ -105,7 +105,7 @@ class Scanner : AppCompatActivity() {
             db.child("rackout").setValue(currentDate)
             db.child("status").setValue("RETRIEVE")
             db.child("retrieveby").setValue(emailStaff)
-        }else if(qty == "2"){
+        }else if(qty == "0"){
         Toast.makeText(applicationContext, "0 quantity, already retrieved", Toast.LENGTH_SHORT).show()
         }
         val intent = Intent(this@Scanner, RetrieveMaterials::class.java)
