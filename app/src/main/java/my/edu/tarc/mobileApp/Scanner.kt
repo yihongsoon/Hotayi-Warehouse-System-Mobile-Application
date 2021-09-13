@@ -10,13 +10,23 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val CAMERA_REQUEST_CODE = 101
 
 class Scanner : AppCompatActivity() {
     private lateinit var codeScanner: CodeScanner
-
+    private lateinit var firebaseAuth : FirebaseAuth
+    private lateinit var string: String
+    private lateinit var qty:String
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
 
@@ -27,6 +37,7 @@ class Scanner : AppCompatActivity() {
     public fun codeScanner(){
         val scanner = findViewById<CodeScannerView>(R.id.ScannerView)
         val text = findViewById<TextView>(R.id.textViewScannerView)
+        firebaseAuth = FirebaseAuth.getInstance()
 
         codeScanner = CodeScanner(this, scanner)
         codeScanner.apply{
@@ -41,23 +52,16 @@ class Scanner : AppCompatActivity() {
             decodeCallback = DecodeCallback {
                 runOnUiThread{
                     text.text = it.text
-
                     var str1= text.text
+                    string = str1.toString()
                     Log.d("QRCodeContent", str1.toString())
-
-                    val intent = Intent(this@Scanner, RetrieveMaterials::class.java)
-                    intent.putExtra("qrCodeContent", str1)
-
-                    intent.putExtra("scanStatus","true")
-                    startActivity(intent)
-
+                    startFunction(string)
                 }
 
             }
             errorCallback = ErrorCallback {
                 runOnUiThread{
                     Log.e("Main", "Camera initialization error: ${it.message}")
-
                 }
             }
         }
@@ -66,9 +70,50 @@ class Scanner : AppCompatActivity() {
         }
     }
 
+    private fun startFunction(string: String) {
+        val query = FirebaseDatabase.getInstance().reference.child("Material").orderByChild("serial")
+            .startAt(string).endAt(string)
+        query.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (userSnapshot in snapshot.children) {
+                        qty = userSnapshot.child("qty").getValue(String::class.java).toString()
+                        Log.d("QUANTITY", qty)
+                        if(qty.isNullOrEmpty()){
+                        }else{
+                            setValue(string, qty)
+                        }
+                    }
+                }else{
+                    Toast.makeText(applicationContext, "No such material exists", Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
 
 
+    }
 
+    private fun setValue(serial: String, qty:String) {
+        val sdf = SimpleDateFormat("dd/M/yyyy")
+        val currentDate = sdf.format(Date())
+        val emailStaff = firebaseAuth.currentUser?.email.toString()
+        if(qty == "1"){
+            val db = FirebaseDatabase.getInstance().reference.child("Material").child(serial)
+            db.child("qty").setValue("0")
+            db.child("rackout").setValue(currentDate)
+            db.child("status").setValue("RETRIEVE")
+            db.child("retrieveby").setValue(emailStaff)
+        }else if(qty == "2"){
+        Toast.makeText(applicationContext, "0 quantity, already retrieved", Toast.LENGTH_SHORT).show()
+        }
+        val intent = Intent(this@Scanner, RetrieveMaterials::class.java)
+        intent.putExtra("qrCodeContent", serial)
+        intent.putExtra("scanStatus","true")
+        //intent.putExtra("quantity", qty)
+        startActivity(intent)
+    }
 
 
     override fun onResume(){
@@ -101,10 +146,8 @@ class Scanner : AppCompatActivity() {
             CAMERA_REQUEST_CODE -> {
                 if(grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED){
                     Toast.makeText(this,"You need the camera permission to be able to scan",Toast.LENGTH_SHORT)
-
                 }
                 else{
-
                 }
             }
         }

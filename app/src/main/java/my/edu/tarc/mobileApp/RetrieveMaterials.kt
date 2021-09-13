@@ -46,8 +46,6 @@ class RetrieveMaterials : AppCompatActivity() {
 
             val intent = Intent(this, Scanner::class.java)
             startActivity(intent)
-
-
         }
 
         btnCheckList.setOnClickListener {
@@ -74,14 +72,8 @@ class RetrieveMaterials : AppCompatActivity() {
 
         if (scanningStatus == "true") {
 
-
-            val query =
-                FirebaseDatabase.getInstance().reference.child("Material").orderByChild("serial")
-                    .startAt(qrTest).endAt(qrTest )
-
-            val db = FirebaseDatabase.getInstance().reference.child("Material")
-                .child(qrTest.toString())
-
+            val query = FirebaseDatabase.getInstance().reference.child("Material").orderByChild("serial")
+                    .startAt(qrTest).endAt(qrTest)
 
         listener=  query.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
@@ -118,49 +110,6 @@ class RetrieveMaterials : AppCompatActivity() {
                                 .toString()
 
 
-                            if (qty == "1") {
-                                db.child("qty").setValue("0")
-                                db.child("rackout").setValue(currentDate)
-                                db.child("staffid").setValue(staffid)
-                                db.child("retrieveby").setValue((emailStaff))
-                                db.child("rackin").setValue("")
-
-                                rackOutDate = userSnapshot.child("rackout").getValue(String::class.java)
-                                    .toString()
-
-                                Log.d("Quantity", qty)
-
-                            } else {
-                                Toast.makeText(
-                                    applicationContext,
-                                    "0 quantity, already retrieved",
-                                    Toast.LENGTH_SHORT
-                                )
-                                    .show()
-
-                                Log.d("Quantity 2", qty)
-
-
-                            }
-
-                            when {
-                                matStatus == "RECEIVED" -> db.child("status")
-                                    .setValue("RETRIEVED")
-
-                                matStatus == "STORED" -> db.child("status")
-                                    .setValue("RETRIEVED")
-
-
-
-                                else -> Toast.makeText(
-                                    applicationContext,
-                                    "Already retrieved!",
-                                    Toast.LENGTH_SHORT
-                                )
-                                    .show()
-
-                            }
-
                                 rackidView.text = rackid
                                 rackNumView.text = rackNumber
                                 partNumView.text = partNum
@@ -169,7 +118,6 @@ class RetrieveMaterials : AppCompatActivity() {
                                 rackoutView.text = rackOutDate
                                 qtyView.text = qty
                                 staffidView.text = retrieveby
-
                         }
 
                     }else{
@@ -195,13 +143,29 @@ class RetrieveMaterials : AppCompatActivity() {
         }
 
 
+        /*when {
+            matStatus == "RECEIVED" -> db.child("status")
+                .setValue("RETRIEVED")
+
+            matStatus == "STORED" -> db.child("status")
+                .setValue("RETRIEVED")
+
+
+
+            else -> Toast.makeText(
+                applicationContext,
+                "Already retrieved!",
+                Toast.LENGTH_SHORT
+            )
+                .show()
+
+        }*/
+
+
+
 
 
     }
-
-
-
-
 
 
     override fun onSupportNavigateUp(): Boolean {
