@@ -13,6 +13,10 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 private const val CAMERA_REQUEST_CODE = 101
 
@@ -24,7 +28,7 @@ class StoreScanner : AppCompatActivity() {
         setContentView(R.layout.activity_store_scanner)
         val actionbar = supportActionBar
 
-        actionbar!!.title = "Product Scanner"
+        actionbar!!.title = "Product Serial Number Scanner"
         actionbar.setDisplayHomeAsUpEnabled(true)
 
         setupPermission()
@@ -47,16 +51,32 @@ class StoreScanner : AppCompatActivity() {
             decodeCallback = DecodeCallback {
                 runOnUiThread{
                     text.text = it.text
-
-                    var str1= text.text
+                    var str1 = text.text.toString()
                     Log.d("StoreCodeContent", str1.toString())
+                    val query =
+                        FirebaseDatabase.getInstance().reference.child("Material").orderByChild("serial")
+                            .equalTo(str1)
+                    query.addListenerForSingleValueEvent(object : ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            if (snapshot.exists()) {
+                                val intent = Intent(this@StoreScanner, RackScanner::class.java)
+                                intent.putExtra("storeCodeContent", str1)
 
-                    val intent = Intent(this@StoreScanner, RackScanner::class.java)
-                    intent.putExtra("storeCodeContent", str1)
+                                intent.putExtra("scanStatus", "true")
+                                startActivity(intent)
+                            }
+                            else{
+                                val intent = Intent(this@StoreScanner, StoreMaterials::class.java)
+                                startActivity(intent)
+                                Toast.makeText(applicationContext,"No such material exists",Toast.LENGTH_SHORT).show()
+                            }
+                        }
 
-                    intent.putExtra("scanStatus","true")
-                    startActivity(intent)
+                        override fun onCancelled(error: DatabaseError) {
+                            TODO("Not yet implemented")
+                        }
 
+                    })
                 }
             }
             errorCallback = ErrorCallback {

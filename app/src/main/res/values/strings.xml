@@ -51,11 +51,18 @@
     //checklist
     <string name="checklistTitle">Material Checklist</string>
     //store materials
-    <string name="scanProduct">Scan Your Product Barcode</string>
+    <string name="scanProduct">Scan Your Material Serial Number</string>
     <string name="scanRack">Scan Your Rack</string>
     <string name="storeTitle">Store Materials</string>
     <string name="RackInDate">Rack In Date: </string>
     <string name="Store">Store</string>
+    <string name="storeRackID">Rack ID:</string>
+    <string name="storeBy">Stored By:</string>
+    <string name="storeRackNum">Rack No:</string>
+    <string name="storePartNum">Part No:</string>
+    <string name="storeSerialNum">Serial No:</string>
+    <string name="storeQuantity">Quantity:</string>
+    <string name="storeStatus">Status:</string>
 
 
     //login and homepage

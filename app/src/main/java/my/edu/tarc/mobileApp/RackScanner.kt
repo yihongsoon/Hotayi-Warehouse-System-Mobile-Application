@@ -1,4 +1,4 @@
-package my.edu.tarc.mobileApp
+ package my.edu.tarc.mobileApp
 
 import android.app.Dialog
 import android.app.ProgressDialog.show
@@ -32,6 +32,11 @@ class RackScanner : AppCompatActivity() {
         if(scanningStatus=="true"){
             setupPermission()
             codeScanner()
+        }
+        else{
+            val intent = Intent(this, StoreMaterials::class.java)
+            startActivity(intent)
+            Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -114,10 +119,6 @@ class RackScanner : AppCompatActivity() {
                 }
             }
         }
-    }
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 
 
