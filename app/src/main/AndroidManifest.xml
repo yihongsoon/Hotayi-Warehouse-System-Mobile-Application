@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="my.edu.tarc.mobileApp">
-    <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera.autoFocus" />
@@ -18,15 +18,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
-        <activity android:name=".RackScanner" android:parentActivityName=".StoreMaterials"></activity>
-        <activity android:name=".StoreScanner"/>
-        <activity android:name=".ReceiveScanner" />
-        <activity android:name=".Login"></activity>
+        <activity
+            android:name=".BarcodeGenerator"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".RackScanner"
+            android:parentActivityName=".StoreMaterials" />
+        <activity android:name=".StoreScanner" />
+        <activity
+            android:name=".ReceiveScanner"
+            android:parentActivityName=".Receive"/>
+        <activity android:name=".Login" />
         <activity android:name=".Scanner" android:parentActivityName=".RetrieveMaterials"></activity>
-        <activity android:name=".StoreMaterials" android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".StoreMaterials"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".RetrieveChecklist" />
-        <activity android:name=".RetrieveMaterials" android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".Receive" android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".RetrieveMaterials"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Receive"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Report"
             android:windowSoftInputMode="adjustNothing" />
@@ -37,8 +50,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -75,4 +75,8 @@
     <string name="homepageReport">Report</string>
     <string name="homepageLogOut">Log Out</string>
     <string name="logIn">Log In</string>
+
+    //barcode generator
+    <string name="barcodeGenerator">Barcode Generator</string>
+    <string name="enterSerial">Enter code to generate</string>
 </resources>
