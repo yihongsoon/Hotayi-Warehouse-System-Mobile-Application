@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class RetrieveChecklist : AppCompatActivity() {
 
+
     private lateinit var todoAdapter: TodoAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +31,16 @@ class RetrieveChecklist : AppCompatActivity() {
         val etTodoTitle = findViewById<EditText>(R.id.etTodoTitle)
         val btnDeleteDoneTodos = findViewById<Button>(R.id.btnDeleteDoneTodos)
 
+//        val sharedPreferences = getSharedPreferences("Checker", Context.MODE_PRIVATE)
+
+
+
         todoAdapter = TodoAdapter(mutableListOf())
 
         rvTodoItems.adapter = todoAdapter
         rvTodoItems.layoutManager = LinearLayoutManager(this)
+
+
 
         btnAddTodo.setOnClickListener {
             val todoTitle = etTodoTitle.text.toString()
@@ -52,7 +60,6 @@ class RetrieveChecklist : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
-
         return true
     }
 

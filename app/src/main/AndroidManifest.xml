@@ -22,7 +22,7 @@
         <activity android:name=".StoreScanner"/>
         <activity android:name=".ReceiveScanner" />
         <activity android:name=".Login"></activity>
-        <activity android:name=".Scanner" />
+        <activity android:name=".Scanner" android:parentActivityName=".RetrieveMaterials"></activity>
         <activity android:name=".StoreMaterials" android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".RetrieveChecklist" />
         <activity android:name=".RetrieveMaterials" android:parentActivityName=".MainActivity"></activity>

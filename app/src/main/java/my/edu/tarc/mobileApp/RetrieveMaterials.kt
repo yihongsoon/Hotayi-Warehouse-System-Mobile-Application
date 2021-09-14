@@ -75,7 +75,7 @@ class RetrieveMaterials : AppCompatActivity() {
             val query = FirebaseDatabase.getInstance().reference.child("Material").orderByChild("serial")
                     .startAt(qrTest).endAt(qrTest)
 
-        listener=  query.addValueEventListener(object : ValueEventListener {
+        query.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         for (userSnapshot in snapshot.children) {
@@ -121,12 +121,12 @@ class RetrieveMaterials : AppCompatActivity() {
                         }
 
                     }else{
-                        Toast.makeText(
-                            applicationContext,
-                            "No such material exists",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
+//                        Toast.makeText(
+//                            applicationContext,
+//                            "No such material exists",
+//                            Toast.LENGTH_SHORT
+//                        )
+//                            .show()
                     }
 
                     query.removeEventListener(this)
@@ -171,6 +171,11 @@ class RetrieveMaterials : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    override fun onBackPressed(){
+        val intent = Intent(this@RetrieveMaterials, MainActivity::class.java)
+        startActivity(intent)
     }
 }
 

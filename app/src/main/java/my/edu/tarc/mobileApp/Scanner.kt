@@ -34,6 +34,15 @@ class Scanner : AppCompatActivity() {
         codeScanner()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     public fun codeScanner(){
         val scanner = findViewById<CodeScannerView>(R.id.ScannerView)
         val text = findViewById<TextView>(R.id.textViewScannerView)
@@ -73,24 +82,39 @@ class Scanner : AppCompatActivity() {
     private fun startFunction(string: String) {
         val query = FirebaseDatabase.getInstance().reference.child("Material").orderByChild("serial")
             .startAt(string).endAt(string)
-        query.addValueEventListener(object : ValueEventListener {
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (userSnapshot in snapshot.children) {
                         qty = userSnapshot.child("qty").getValue(String::class.java).toString()
                         Log.d("QUANTITY", qty)
+
                         if(qty.isNullOrEmpty()){
+
                         }else{
                             setValue(string, qty)
+
                         }
+
+
+
+
+
                     }
                 }else{
                     Toast.makeText(applicationContext, "No such material exists", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@Scanner, RetrieveMaterials::class.java)
+                    startActivity(intent)
+
                 }
             }
             override fun onCancelled(error: DatabaseError) {
             }
+
+
         })
+
+
 
 
     }
@@ -105,13 +129,18 @@ class Scanner : AppCompatActivity() {
             db.child("rackout").setValue(currentDate)
             db.child("status").setValue("RETRIEVE")
             db.child("retrieveby").setValue(emailStaff)
-        }else if(qty == "2"){
+            Log.d("qty", qty)
+            Toast.makeText(applicationContext, "Material retrieved successfully", Toast.LENGTH_SHORT).show()
+
+        }else {
         Toast.makeText(applicationContext, "0 quantity, already retrieved", Toast.LENGTH_SHORT).show()
         }
+
         val intent = Intent(this@Scanner, RetrieveMaterials::class.java)
         intent.putExtra("qrCodeContent", serial)
         intent.putExtra("scanStatus","true")
         //intent.putExtra("quantity", qty)
+
         startActivity(intent)
     }
 
