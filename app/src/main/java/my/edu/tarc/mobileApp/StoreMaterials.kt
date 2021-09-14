@@ -80,12 +80,9 @@ class StoreMaterials : AppCompatActivity() {
 
                 storeRackID.text= displayStoreRackID
                 storeRackNo.text= displayStoreRackNo
-               // storePartNo.text = displayStorePartNo
-               // storeSerialNo.text = displayStoreSerialNo
-               // storeStatus.text = "RECEIVED"
                 storeRackInDate.text = currentDate
                 storedBy.text = emailStaff
-                //storeQty.text = "1"
+
                 val query = FirebaseDatabase.getInstance().reference.child("Material").orderByChild("serial")
                     .startAt(serialCode).endAt(serialCode + "\uf8ff")
                 query.addValueEventListener(object: ValueEventListener {
