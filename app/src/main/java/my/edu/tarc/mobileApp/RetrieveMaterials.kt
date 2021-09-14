@@ -160,11 +160,6 @@ class RetrieveMaterials : AppCompatActivity() {
                 .show()
 
         }*/
-
-
-
-
-
     }
 
 
