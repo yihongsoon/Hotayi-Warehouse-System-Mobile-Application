@@ -129,10 +129,13 @@ class Scanner : AppCompatActivity() {
             db.child("rackout").setValue(currentDate)
             db.child("status").setValue("RETRIEVE")
             db.child("retrieveby").setValue(emailStaff)
+
             Log.d("qty", qty)
             Toast.makeText(applicationContext, "Material retrieved successfully", Toast.LENGTH_SHORT).show()
 
         }else {
+
+
         Toast.makeText(applicationContext, "0 quantity, already retrieved", Toast.LENGTH_SHORT).show()
         }
 
