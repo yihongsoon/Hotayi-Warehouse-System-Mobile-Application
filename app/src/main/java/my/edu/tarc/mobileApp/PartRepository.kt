@@ -3,20 +3,20 @@ package my.edu.tarc.mobileApp
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 
-class PartRepository (private val contactDao: PartDao){
+class PartRepository (private val partDao: PartDao){
     //A cache copy of data from Room
-    val allContact: LiveData<List<Part>> = contactDao.getAllContact()
+    val allPart: LiveData<List<Part>> = partDao.getAllContact()
 
     //@Suppress("RedundantSuspentModifier")
 
     /*@WorkerThread
     suspend fun insert(part: Part){
-        contactDao.insert(material)
+        partDao.insert(material)
     }
 
     @WorkerThread
     suspend fun delete(part: Part){
-        contactDao.delete(material)
+        partDao.delete(material)
     }*/
 
 }
