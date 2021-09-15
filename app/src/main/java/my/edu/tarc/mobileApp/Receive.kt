@@ -109,7 +109,7 @@ class Receive : AppCompatActivity(){
                     val Material = Material(serial=serial.text.toString(),part=partNo.text.toString(), qty = qty.text.toString(),
                         receivedate=txtDate.text.toString(),status=status.text.toString(),staffid=staffID.text.toString(),storeby=storeby.toString(),
                         retrieveby=retrieveby.toString(), rackid=rackid.toString(),rackno=rackno.toString(),rackin=rackin.toString(),
-                        rackout=rackout.toString(),barcodepic=serial.text.toString()+".jpg")
+                        rackout=rackout.toString())
                     myReference.child(Material.serial.toString()).child("serial").setValue(Material.serial)
                     myReference.child(Material.serial.toString()).child("part").setValue(Material.part)
                     myReference.child(Material.serial.toString()).child("qty").setValue(Material.qty)
