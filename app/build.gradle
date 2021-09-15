@@ -64,4 +64,18 @@ dependencies {
 
     //generate barcode
     implementation'com.google.zxing:core:3.4.0'
+
+    //Room Database
+    def room_version = "2.3.0"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // Room components
+    implementation "androidx.room:room-ktx:$room_version"
+    //kapt "androidx.room:room-compiler:$room_version"
+    androidTestImplementation "androidx.room:room-testing:$room_version"
+
+    //TODO 1: Insert Volley dependency file
+    implementation 'com.android.volley:volley:1.2.1'
 }
