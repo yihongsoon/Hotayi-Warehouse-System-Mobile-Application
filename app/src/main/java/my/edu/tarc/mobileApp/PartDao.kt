@@ -12,6 +12,6 @@ interface PartDao {
     @Update
     suspend fun update(part: Part)
 
-    @Query("SELECT * FROM material ORDER BY serial ASC")
-    fun getAllContact(): LiveData<List<Part>>
+    @Query("SELECT * FROM part ORDER BY serial ASC")
+    fun getAllPart(): LiveData<List<Part>>
 }

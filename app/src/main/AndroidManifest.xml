@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp">
-        <activity android:name=".PartRecord"></activity>
+        <activity android:name=".PartRecord"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".BarcodeGenerator"
             android:parentActivityName=".MainActivity" />

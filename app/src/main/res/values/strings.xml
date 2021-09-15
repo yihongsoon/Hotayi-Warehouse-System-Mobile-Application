@@ -79,4 +79,5 @@
     //barcode generator
     <string name="barcodeGenerator">Barcode Generator</string>
     <string name="enterSerial">Enter code to generate</string>
+    <string name="partRecord">Part Record</string>
 </resources>
