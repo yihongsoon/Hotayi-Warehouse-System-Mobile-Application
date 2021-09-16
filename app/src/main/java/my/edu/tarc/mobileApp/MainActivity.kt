@@ -60,8 +60,8 @@ class MainActivity : AppCompatActivity() {
                  true
             }
             R.id.action_part_record -> {
-                val navController = findNavController(R.id.nav_host_fragment_content_part)
-                navController.navigate(R.id.action_mainActivity_to_partFragment)
+                val intent = Intent(this, PartRecord::class.java)
+                startActivity(intent)
                 true
             }else -> super.onOptionsItemSelected(item)
         }
