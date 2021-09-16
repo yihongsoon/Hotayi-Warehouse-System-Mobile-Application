@@ -2,6 +2,8 @@ package my.edu.tarc.mobileApp
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import androidx.room.Insert
+import androidx.room.Dao
 
 @Dao
 interface PartDao {

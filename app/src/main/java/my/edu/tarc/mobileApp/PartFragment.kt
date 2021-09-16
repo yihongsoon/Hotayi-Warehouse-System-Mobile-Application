@@ -8,44 +8,34 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import my.edu.tarc.mobileApp.databinding.FragmentPartBinding
+import kotlinx.android.synthetic.main.activity_report.view.*
+import kotlinx.android.synthetic.main.fragment_part.view.*
 
 class PartFragment : Fragment() {
 
-    private var _binding: FragmentPartBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-    private val partViewModel: PartViewModel by activityViewModels()
+    private lateinit var partViewModel: PartViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPartBinding.inflate(inflater, container, false)
-        return binding.root
+        val view = inflater.inflate(R.layout.fragment_part,container, false)
+
+        val adapter = PartAdapter()
+        val rvPartRecord = view.rvPartRecord
+        rvPartRecord.adapter = adapter
+        //rvPartRecord.LayoutManager = LinearLayoutManager(requireContext())
+
+        partViewModel = ViewModelProvider(this).get(PartViewModel::class.java)
+        partViewModel.getAllPart.observe(viewLifecycleOwner, Observer {part ->
+            adapter.setData(part)
+        })
+
+        return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val partAdapter: PartAdapter = PartAdapter()
-
-        partViewModel.partList.observe(
-            viewLifecycleOwner, Observer {
-                if(it.isEmpty()){
-                    Toast.makeText(context, "No record", Toast.LENGTH_SHORT).show()
-                } else {
-                    partAdapter.setPart(it)
-                }
-            }
-        )
-
-        binding.rvPartRecord.apply {
-            adapter = partAdapter
-        }
-    }
 }

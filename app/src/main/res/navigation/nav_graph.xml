@@ -5,26 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/partFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="my.edu.tarc.mobileApp.MainActivity"
-        android:label="MainActivity"
-        app:startDestination="@id/action_mainActivity_to_partRecord">
-        <action
-            android:id="@+id/action_mainActivity_to_barcodeGenerator"
-            app:destination="@id/barcodeGenerator" />
-        <action
-            android:id="@+id/action_mainActivity_to_partRecord"
-            app:destination="@id/partRecord" />
-        <action
-            android:id="@+id/action_mainActivity_to_partFragment"
-            app:destination="@id/partFragment" />
-    </activity>
-    <activity
-        android:id="@+id/barcodeGenerator"
-        android:name="my.edu.tarc.mobileApp.BarcodeGenerator"
-        android:label="activity_barcode_generator"
-        tools:layout="@layout/activity_barcode_generator" />
     <fragment
         android:id="@+id/partRecord"
         android:name="my.edu.tarc.mobileApp.PartRecord"
@@ -34,5 +14,18 @@
         android:id="@+id/partFragment"
         android:name="my.edu.tarc.mobileApp.PartFragment"
         android:label="fragment_part"
-        tools:layout="@layout/fragment_part" />
+        tools:layout="@layout/fragment_part" >
+        <action
+            android:id="@+id/action_partFragment_to_receive"
+            app:destination="@id/receive" />
+    </fragment>
+    <activity
+        android:id="@+id/receive"
+        android:name="my.edu.tarc.mobileApp.Receive"
+        android:label="activity_receive"
+        tools:layout="@layout/activity_receive" >
+        <action
+            android:id="@+id/action_receive_to_partFragment"
+            app:destination="@id/partFragment" />
+    </activity>
 </navigation>

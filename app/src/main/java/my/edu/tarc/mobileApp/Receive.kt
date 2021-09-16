@@ -19,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import com.budiyev.android.codescanner.BarcodeUtils.encodeBitmap
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -39,10 +40,10 @@ import java.util.*
 class Receive : AppCompatActivity(){
 
     private lateinit var firebaseAuth : FirebaseAuth
-    private lateinit var preferences: SharedPreferences
     private var _binding: ActivityReceiveBinding? = null
     private val binding get() = _binding!!
-    private val partViewModel: PartViewModel by viewModels()
+    //private val partViewModel: PartViewModel by viewModels()
+    private lateinit var partViewModel: PartViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -60,6 +61,8 @@ class Receive : AppCompatActivity(){
             val intent = Intent(this, ReceiveScanner::class.java)
             startActivity(intent)
         }
+
+        partViewModel = ViewModelProvider(this).get(PartViewModel::class.java)
 
         val intent = intent
         val partCode = intent.getStringExtra("partCodeContent")
@@ -128,17 +131,26 @@ class Receive : AppCompatActivity(){
                     myReference.child(Material.serial.toString()).child("storeby").setValue(Material.storeby)
                     myReference.child(Material.serial.toString()).child("retrieveby").setValue(Material.retrieveby)
 
-                    binding.apply {
+                    val part = Part(serial.text.toString(),partNo.text.toString(),qty.text.toString(),status.text.toString(),txtDate.text.toString(),
+                    rackid,rackno,rackin,rackout,staffID.text.toString(),storeby, retrieveby)
+
+                    partViewModel.addPart(part)
+
+                    if(serial.text!=null) {
+
+                        Toast.makeText(
+                            applicationContext,
+                            "Part details have been successfully added.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    /*binding.apply {
                         partViewModel.addPart(Part(binding.txtSerialNo.text.toString(),binding.txtPartNo.text.toString(),
                             binding.txtQuantity.text.toString(),binding.txtStatus.text.toString(),binding.txtRecDate.text.toString(),
                             rackid.toString(),rackno.toString(),rackin.toString(),rackout.toString(),binding.txtRecBy.text.toString(),
-                        storeby.toString(), retrieveby.toString()))
-
-                        /*(serial.text.toString(),partNo.text.toString(),qty.text.toString(),
-                        status.text.toString(),txtDate.text.toString(),rackid.toString(),rackno.toString(),
-                        rackin.toString(),rackout.toString(),staffID.text.toString(),storeby.toString(),
-                        retrieveby.toString())*/
-                    }
+                            storeby.toString(), retrieveby.toString()))
+                    }*/
                 
             }else{
                 Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT).show()

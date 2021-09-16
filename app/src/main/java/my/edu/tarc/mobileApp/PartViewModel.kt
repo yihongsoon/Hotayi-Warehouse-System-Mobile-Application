@@ -6,22 +6,21 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PartViewModel(application: Application): AndroidViewModel(application){
 
-    var partList : LiveData<List<Part>>
+    val getAllPart: LiveData<List<Part>>
     private val repository: PartRepository
 
     init {
-        Log.d("ViewModel", "Initialize")
         val partDao = PartDatabase.getDatabase(application).partDao()
         repository = PartRepository(partDao)
-        partList = repository.allPart
+        getAllPart = repository.getAllPart
     }
 
-    fun addPart(part: Part) = viewModelScope.launch{
+    fun addPart(part: Part) = viewModelScope.launch(Dispatchers.IO){
         repository.insert(part)
-
     }
 }
