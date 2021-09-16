@@ -80,4 +80,6 @@
     <string name="barcodeGenerator">Barcode Generator</string>
     <string name="enterSerial">Enter code to generate</string>
     <string name="partRecord">Part Record</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

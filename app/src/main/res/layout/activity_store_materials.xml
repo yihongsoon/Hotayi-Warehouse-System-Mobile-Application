@@ -81,7 +81,7 @@
         android:padding="16dp"
         android:text="@string/Store"
         android:textColor="@android:color/white"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
