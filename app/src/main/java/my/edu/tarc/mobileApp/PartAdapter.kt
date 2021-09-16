@@ -6,13 +6,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.record_layout.view.*
 
-class PartAdapter internal constructor(): RecyclerView.Adapter<PartAdapter.ViewHolder>(){
+class PartAdapter: RecyclerView.Adapter<PartAdapter.ViewHolder>(){
+
     private var partList = emptyList<Part>()
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         //To hold each record
-        val txtSerial: TextView = view.findViewById(R.id.txtRecSerial)
+        /*val txtSerial: TextView = view.findViewById(R.id.txtRecSerial)
         val txtPartNo: TextView = view.findViewById(R.id.txtRecPart)
         val txtQty: TextView = view.findViewById(R.id.txtRecQty)
         val txtStatus: TextView = view.findViewById(R.id.txtRecStatus)
@@ -23,41 +25,40 @@ class PartAdapter internal constructor(): RecyclerView.Adapter<PartAdapter.ViewH
         val txtRackOut: TextView = view.findViewById(R.id.txtRecRackOut)
         val txtReceiBy: TextView = view.findViewById(R.id.txtRecReceiBy)
         val txtStoreBy: TextView = view.findViewById(R.id.txtRecStoreBy)
-        val txtRetriBy: TextView = view.findViewById(R.id.txtRecRetriBy)
+        val txtRetriBy: TextView = view.findViewById(R.id.txtRecRetriBy)*/
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         //To create a layout to hold each record
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.record_layout, parent, false)
-        return ViewHolder(view)
+        //val view = LayoutInflater.from(parent.context).inflate(R.layout.record_layout, parent, false)
+        //return ViewHolder(view)
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.record_layout,parent,false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //Connect data to the layout
-        holder.txtSerial.text = partList[position].serial
-        holder.txtPartNo.text = partList[position].part
-        holder.txtQty.text = partList[position].qty
-        holder.txtStatus.text = partList[position].status
-        holder.txtReceiDate.text = partList[position].receivedate
-        holder.txtRackID.text = partList[position].rackid
-        holder.txtRackNo.text = partList[position].rackno
-        holder.txtRackIn.text = partList[position].rackin
-        holder.txtRackOut.text = partList[position].rackout
-        holder.txtReceiBy.text = partList[position].staffid
-        holder.txtStoreBy.text = partList[position].storeby
-        holder.txtRetriBy.text = partList[position].retrieveby
-        holder.itemView.setOnClickListener{
-            Toast.makeText(it.context, "Serial:" + partList[position].serial, Toast.LENGTH_SHORT).show()
-        }
+        val currentItem = partList[position]
+        holder.itemView.txtRecSerial.text = currentItem.serial.toString()
+        holder.itemView.txtRecPart.text = currentItem.part.toString()
+        holder.itemView.txtRecQty.text = currentItem.qty.toString()
+        holder.itemView.txtRecStatus.text = currentItem.status.toString()
+        holder.itemView.txtRecReceiDate.text = currentItem.receivedate.toString()
+        holder.itemView.txtRecRackID.text = currentItem.rackid.toString()
+        holder.itemView.txtRecRackNo.text = currentItem.rackno.toString()
+        holder.itemView.txtRecRackIn.text = currentItem.rackin.toString()
+        holder.itemView.txtRecRackOut.text = currentItem.rackout.toString()
+        holder.itemView.txtRecReceiBy.text = currentItem.staffid.toString()
+        holder.itemView.txtRecStoreBy.text = currentItem.storeby.toString()
+        holder.itemView.txtRecRetriBy.text = currentItem.retrieveby.toString()
     }
 
-    internal fun setPart(part: List<Part>){
+    fun setData(part: List<Part>){
         this.partList = part
         notifyDataSetChanged()
-
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return partList.size
     }
+
 }
