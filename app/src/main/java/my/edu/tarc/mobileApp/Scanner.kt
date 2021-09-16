@@ -29,6 +29,8 @@ class Scanner : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
+        val actionbar = supportActionBar
+        actionbar!!.title = "Retrieve Material"
 
         setupPermission()
         codeScanner()

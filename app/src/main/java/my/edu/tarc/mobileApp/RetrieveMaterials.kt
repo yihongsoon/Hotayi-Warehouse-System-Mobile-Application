@@ -8,8 +8,11 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import my.edu.tarc.mobileApp.databinding.ActivityReceiveBinding
+import my.edu.tarc.mobileApp.databinding.ActivityStoreMaterialsBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,7 +28,9 @@ class RetrieveMaterials : AppCompatActivity() {
     var retrieveby = ""
     lateinit var listener: ValueEventListener
     private lateinit var firebaseAuth : FirebaseAuth
-
+    private var _binding: ActivityStoreMaterialsBinding? = null
+    private val binding get() = _binding!!
+    private val partViewModel: PartViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -119,6 +124,8 @@ class RetrieveMaterials : AppCompatActivity() {
                                 qtyView.text = qty
                                 staffidView.text = retrieveby
                         }
+
+
 
                     }else{
 //                        Toast.makeText(

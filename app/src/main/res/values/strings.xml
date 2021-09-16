@@ -51,7 +51,7 @@
     //checklist
     <string name="checklistTitle">Material Checklist</string>
     //store materials
-    <string name="scanProduct">Scan Your Material Serial Number</string>
+    <string name="scanProduct">Scan Here</string>
     <string name="scanRack">Scan Your Rack</string>
     <string name="storeTitle">Store Materials</string>
     <string name="RackInDate">Rack In Date: </string>
