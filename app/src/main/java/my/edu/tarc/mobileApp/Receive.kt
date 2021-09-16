@@ -128,11 +128,12 @@ class Receive : AppCompatActivity(){
                     myReference.child(Material.serial.toString()).child("storeby").setValue(Material.storeby)
                     myReference.child(Material.serial.toString()).child("retrieveby").setValue(Material.retrieveby)
 
-                    /*binding.apply {
-                        partViewModel.addPart(Part(serial.text.toString(),part=partNo.text.toString(),qty = qty.text.toString(),
-                            status=status.text.toString(),receivedate=txtDate.text.toString(),rackid=rackid.toString(),rackno=rackno.toString(),
-                            rackin=rackin.toString(),rackout=rackout.toString(),staffid=staffID.text.toString(),storeby=storeby.toString(),retrieveby=retrieveby.toString()))
-                    }*/
+                    binding.apply {
+                        partViewModel.addPart(Part(serial.text.toString(),partNo.text.toString(),qty.text.toString(),
+                            status.text.toString(),txtDate.text.toString(),rackid.toString(),rackno.toString(),
+                            rackin.toString(),rackout.toString(),staffID.text.toString(),storeby.toString(),
+                            retrieveby.toString()))
+                    }
                 
             }else{
                 Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT).show()
