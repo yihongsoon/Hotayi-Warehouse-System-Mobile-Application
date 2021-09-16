@@ -16,7 +16,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.activityViewModels
 import com.budiyev.android.codescanner.BarcodeUtils.encodeBitmap
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -26,7 +28,7 @@ import com.google.firebase.storage.ktx.storage
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.common.BitMatrix
-import my.edu.tarc.mobileApp.databinding.ActivityStoreMaterialsBinding
+import my.edu.tarc.mobileApp.databinding.ActivityReceiveBinding
 import org.w3c.dom.Text
 import java.io.File
 import java.io.IOException
@@ -38,6 +40,9 @@ class Receive : AppCompatActivity(){
 
     private lateinit var firebaseAuth : FirebaseAuth
     private lateinit var preferences: SharedPreferences
+    private var _binding: ActivityReceiveBinding? = null
+    private val binding get() = _binding!!
+    private val partViewModel: PartViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -107,9 +112,9 @@ class Receive : AppCompatActivity(){
                     val retrieveby = ""
 
                     val Material = Material(serial=serial.text.toString(),part=partNo.text.toString(), qty = qty.text.toString(),
-                        receivedate=txtDate.text.toString(),status=status.text.toString(),staffid=staffID.text.toString(),storeby=storeby.toString(),
-                        retrieveby=retrieveby.toString(), rackid=rackid.toString(),rackno=rackno.toString(),rackin=rackin.toString(),
-                        rackout=rackout.toString(),barcodepic=serial.text.toString()+".jpg")
+                        status=status.text.toString(), receivedate=txtDate.text.toString(), rackid=rackid.toString(), rackno=rackno.toString(),
+                        rackin=rackin.toString(), rackout=rackout.toString(), staffid=staffID.text.toString(),storeby=storeby.toString(),
+                        retrieveby=retrieveby.toString())
                     myReference.child(Material.serial.toString()).child("serial").setValue(Material.serial)
                     myReference.child(Material.serial.toString()).child("part").setValue(Material.part)
                     myReference.child(Material.serial.toString()).child("qty").setValue(Material.qty)
@@ -122,6 +127,12 @@ class Receive : AppCompatActivity(){
                     myReference.child(Material.serial.toString()).child("receiveby").setValue(Material.staffid)
                     myReference.child(Material.serial.toString()).child("storeby").setValue(Material.storeby)
                     myReference.child(Material.serial.toString()).child("retrieveby").setValue(Material.retrieveby)
+
+                    binding.apply {
+                        partViewModel.addPart(Part(serial.text.toString(),part=partNo.text.toString(),qty = qty.text.toString(),
+                            status=status.text.toString(),receivedate=txtDate.text.toString(),rackid=rackid.toString(),rackno=rackno.toString(),
+                            rackin=rackin.toString(),rackout=rackout.toString(),staffid=staffID.text.toString(),storeby=storeby.toString(),retrieveby=retrieveby.toString()))
+                    }
                 
             }else{
                 Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT).show()

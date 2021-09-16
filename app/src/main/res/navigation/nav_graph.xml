@@ -12,10 +12,18 @@
         <action
             android:id="@+id/action_mainActivity_to_barcodeGenerator"
             app:destination="@id/barcodeGenerator" />
+        <action
+            android:id="@+id/action_mainActivity_to_partRecord"
+            app:destination="@id/partRecord" />
     </activity>
     <activity
         android:id="@+id/barcodeGenerator"
         android:name="my.edu.tarc.mobileApp.BarcodeGenerator"
         android:label="activity_barcode_generator"
         tools:layout="@layout/activity_barcode_generator" />
+    <fragment
+        android:id="@+id/partRecord"
+        android:name="my.edu.tarc.mobileApp.PartRecord"
+        android:label="activity_part_record"
+        tools:layout="@layout/activity_part_record" />
 </navigation>

@@ -21,7 +21,7 @@ class PartViewModel(application: Application): AndroidViewModel(application){
         partList = repository.allPart
     }
 
-    fun addContact(part: Part) = viewModelScope.launch{
+    fun addPart(part: Part) = viewModelScope.launch{
         repository.insert(part)
     }
 }

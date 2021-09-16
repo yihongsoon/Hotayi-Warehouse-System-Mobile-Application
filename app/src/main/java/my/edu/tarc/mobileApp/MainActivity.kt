@@ -58,6 +58,11 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, BarcodeGenerator::class.java)
                  startActivity(intent)
                  true
+            }
+            R.id.action_part_record -> {
+                val intent = Intent(this,PartRecord::class.java)
+                startActivity(intent)
+                true
             }else -> super.onOptionsItemSelected(item)
         }
     }
