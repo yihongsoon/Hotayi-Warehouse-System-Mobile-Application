@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_report.view.*
 import kotlinx.android.synthetic.main.fragment_part.view.*
-import my.edu.tarc.mobileApp.databinding.FragmentPartBinding
 
 class PartFragment : Fragment() {
 
@@ -29,6 +28,7 @@ class PartFragment : Fragment() {
         val adapter = PartAdapter()
         val rvPartRecord = view.rvPartRecord
         rvPartRecord.adapter = adapter
+        //rvPartRecord.LayoutManager = LinearLayoutManager(requireContext())
 
         partViewModel = ViewModelProvider(this).get(PartViewModel::class.java)
         partViewModel.getAllPart.observe(viewLifecycleOwner, Observer {part ->

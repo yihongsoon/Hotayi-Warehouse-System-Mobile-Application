@@ -22,6 +22,5 @@ class PartViewModel(application: Application): AndroidViewModel(application){
 
     fun addPart(part: Part) = viewModelScope.launch(Dispatchers.IO){
         repository.insert(part)
-
     }
 }

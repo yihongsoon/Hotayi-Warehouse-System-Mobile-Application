@@ -136,6 +136,15 @@ class Receive : AppCompatActivity(){
 
                     partViewModel.addPart(part)
 
+                    if(serial.text!=null) {
+
+                        Toast.makeText(
+                            applicationContext,
+                            "Part details have been successfully added.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
                     /*binding.apply {
                         partViewModel.addPart(Part(binding.txtSerialNo.text.toString(),binding.txtPartNo.text.toString(),
                             binding.txtQuantity.text.toString(),binding.txtStatus.text.toString(),binding.txtRecDate.text.toString(),
