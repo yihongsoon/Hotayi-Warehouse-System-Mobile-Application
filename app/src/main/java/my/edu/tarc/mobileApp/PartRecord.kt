@@ -17,43 +17,48 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import my.edu.tarc.mobileApp.databinding.ActivityPartRecordBinding
 
-class PartRecord : AppCompatActivity() {
+class PartRecord : Fragment() {
 
     private var _binding: ActivityPartRecordBinding? = null
 
     private val binding get() = _binding!!
-    private val partViewModel: PartViewModel by viewModels()
+    private val partViewModel: PartViewModel by activityViewModels()
 
-    /*override fun onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         _binding = ActivityPartRecordBinding.inflate(inflater, container, false)
         return binding.root
-    }*/
+    }
 
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val partAdapter: PartAdapter = PartAdapter()
 
         partViewModel.partList.observe(
             viewLifecycleOwner, Observer {
-                if(it.isEmpty()){
+                if (it.isEmpty()) {
                     Toast.makeText(context, "No record", Toast.LENGTH_SHORT).show()
                 } else {
                     partAdapter.setContact(it)
                 }
             }
-        )*/
+        )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+        binding.rvPartRecord.apply {
+            adapter = partAdapter
+        }
+
+        /*override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_part_record)
 
-        val partAdapter: PartAdapter = PartAdapter()
 
-        binding.rvPartRecord.apply{
-            adapter = partAdapter
-        }
+    }*/
     }
 }
