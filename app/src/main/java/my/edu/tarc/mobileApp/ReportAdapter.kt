@@ -10,6 +10,7 @@ import org.w3c.dom.Text
 
 class ReportAdapter (private val reportList: ArrayList<ReportClass>):RecyclerView.Adapter<ReportAdapter.MyViewHolder>(){
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportAdapter.MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.report_item,parent,false)
         return MyViewHolder(itemView)

@@ -34,8 +34,6 @@ class PartFragment : Fragment() {
         partViewModel.getAllPart.observe(viewLifecycleOwner,Observer{part ->
             adapter.setData(part)
         })
-
         return view
     }
-
 }
