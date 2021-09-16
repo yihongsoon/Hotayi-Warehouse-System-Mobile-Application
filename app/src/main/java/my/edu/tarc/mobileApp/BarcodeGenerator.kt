@@ -17,7 +17,9 @@ class BarcodeGenerator : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_barcode_generator)
+        val actionbar = supportActionBar
 
+        actionbar!!.title = "Barcode Generator"
         val barcodeInput = findViewById<EditText>(R.id.editTextBarcodeInput)
         val btnBarGenerator = findViewById<Button>(R.id.buttonBarGenerator)
         val imageViewBarcode = findViewById<ImageView>(R.id.imageViewBarGenerator)
