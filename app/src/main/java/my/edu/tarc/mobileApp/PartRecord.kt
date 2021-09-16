@@ -1,5 +1,6 @@
 package my.edu.tarc.mobileApp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,5 +20,16 @@ import my.edu.tarc.mobileApp.databinding.ActivityPartRecordBinding
 
 class PartRecord : AppCompatActivity() {
 
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding: ActivityPartRecordBinding
+    private lateinit var partViewModel: PartViewModel
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onBackPressed(){
+        val intent = Intent(this@PartRecord, MainActivity::class.java)
+        startActivity(intent)
+    }
 }
