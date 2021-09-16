@@ -153,7 +153,7 @@ class Receive : AppCompatActivity(){
                     }
                 
             }else{
-                Toast.makeText(applicationContext, "Wrong Barcode Scanned", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Invalid Part Barcode", Toast.LENGTH_SHORT).show()
             }
         }else{
 
