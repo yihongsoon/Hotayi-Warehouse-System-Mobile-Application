@@ -28,10 +28,10 @@ class PartFragment : Fragment() {
         val adapter = PartAdapter()
         val rvPartRecord = view.rvPartRecord
         rvPartRecord.adapter = adapter
-        //rvPartRecord.LayoutManager = LinearLayoutManager(requireContext())
+        rvPartRecord.layoutManager = LinearLayoutManager(requireContext())
 
         partViewModel = ViewModelProvider(this).get(PartViewModel::class.java)
-        partViewModel.getAllPart.observe(viewLifecycleOwner, Observer {part ->
+        partViewModel.getAllPart.observe(viewLifecycleOwner,Observer{part ->
             adapter.setData(part)
         })
 

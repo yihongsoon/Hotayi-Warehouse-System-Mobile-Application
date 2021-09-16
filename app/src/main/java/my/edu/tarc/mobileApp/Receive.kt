@@ -20,6 +20,7 @@ import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.budiyev.android.codescanner.BarcodeUtils.encodeBitmap
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -136,6 +137,7 @@ class Receive : AppCompatActivity(){
 
                     partViewModel.addPart(part)
 
+
                     if(serial.text!=null) {
 
                         Toast.makeText(
@@ -143,7 +145,9 @@ class Receive : AppCompatActivity(){
                             "Part details have been successfully added.",
                             Toast.LENGTH_SHORT
                         ).show()
+
                     }
+
 
                     /*binding.apply {
                         partViewModel.addPart(Part(binding.txtSerialNo.text.toString(),binding.txtPartNo.text.toString(),

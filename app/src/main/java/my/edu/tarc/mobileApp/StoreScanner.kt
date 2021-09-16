@@ -85,9 +85,7 @@ class StoreScanner : AppCompatActivity() {
                 }
             }
         }
-        scanner.setOnClickListener{
-            codeScanner.startPreview()
-        }
+
     }
     override fun onResume(){
         super.onResume()
