@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -182,6 +184,26 @@ class Receive : AppCompatActivity(){
                 Log.d("ERROR",ex.message.toString())
             }
             imageBarcode.setImageBitmap(bitmap)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId){
+            R.id.action_generator -> {
+                val intent = Intent(this, BarcodeGenerator::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.action_part_record -> {
+                val navController = findNavController(R.id.nav_host_fragment_content_part)
+                navController.navigate(R.id.action_receive_to_partFragment)
+                true
+            }else -> super.onOptionsItemSelected(item)
         }
     }
 }
