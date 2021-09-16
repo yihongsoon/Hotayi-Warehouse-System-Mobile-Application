@@ -5,7 +5,4 @@
     <item
         android:id="@+id/action_generator"
         android:title="@string/barcodeGenerator" />
-    <item
-        android:id="@+id/action_part_record"
-        android:title="@string/partRecord" />
 </menu>
