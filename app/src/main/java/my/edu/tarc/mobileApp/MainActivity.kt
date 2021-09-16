@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                  true
             }
             R.id.action_part_record -> {
-                val intent = Intent(this,PartRecord::class.java)
+                val intent = Intent(this,PartFragment::class.java)
                 startActivity(intent)
                 true
             }else -> super.onOptionsItemSelected(item)
