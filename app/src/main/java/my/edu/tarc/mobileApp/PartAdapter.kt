@@ -51,7 +51,7 @@ class PartAdapter internal constructor(): RecyclerView.Adapter<PartAdapter.ViewH
         }
     }
 
-    internal fun setContact(part: List<Part>){
+    internal fun setPart(part: List<Part>){
         this.partList = part
         notifyDataSetChanged()
     }

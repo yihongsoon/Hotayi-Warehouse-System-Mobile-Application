@@ -3,18 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/partFragment">
 
     <activity
         android:id="@+id/mainActivity"
         android:name="my.edu.tarc.mobileApp.MainActivity"
-        android:label="MainActivity">
+        android:label="MainActivity"
+        app:startDestination="@id/action_mainActivity_to_partRecord">
         <action
             android:id="@+id/action_mainActivity_to_barcodeGenerator"
             app:destination="@id/barcodeGenerator" />
         <action
             android:id="@+id/action_mainActivity_to_partRecord"
             app:destination="@id/partRecord" />
+        <action
+            android:id="@+id/action_mainActivity_to_partFragment"
+            app:destination="@id/partFragment" />
     </activity>
     <activity
         android:id="@+id/barcodeGenerator"
@@ -26,4 +30,9 @@
         android:name="my.edu.tarc.mobileApp.PartRecord"
         android:label="activity_part_record"
         tools:layout="@layout/activity_part_record" />
+    <fragment
+        android:id="@+id/partFragment"
+        android:name="my.edu.tarc.mobileApp.PartFragment"
+        android:label="fragment_part"
+        tools:layout="@layout/fragment_part" />
 </navigation>
