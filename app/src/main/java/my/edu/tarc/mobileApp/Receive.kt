@@ -92,15 +92,22 @@ class Receive : AppCompatActivity(){
 
         val imageBarcode = findViewById<ImageView>(R.id.imageViewBarcode)
 
+        var patternPart = Regex(pattern = "^P[0-9]{6,7}")
+        var patternQty = Regex(pattern = "^[1]{1}")
+
         if(scanningStatus == "true"){
             val splitPart = partCode?.split("-")
 
             val resultPart = splitPart?.count()
             Log.d("CountPart", resultPart.toString())
 
-            if(resultPart == 2){
-                val showPartNo = splitPart?.get(0)
-                val showQty = splitPart?.get(1)
+            val showPartNo = splitPart?.get(0)
+            val showQty = splitPart?.get(1)
+
+            val testPart = showPartNo.toString()
+            val testQty = showQty.toString()
+
+            if(resultPart == 2 && testPart.matches(patternPart) &&  testQty.matches(patternQty)){
 
                     txtDate.text = currentDate.toString()
                     partNo.text = showPartNo
