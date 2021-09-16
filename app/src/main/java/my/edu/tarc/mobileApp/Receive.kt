@@ -140,7 +140,6 @@ class Receive : AppCompatActivity(){
         }else{
 
         }
-
         val buttonGenerate = findViewById<Button>(R.id.buttonGenerate)
 
         buttonGenerate.setOnClickListener(){
