@@ -96,10 +96,6 @@ class Scanner : AppCompatActivity() {
 
                         }
 
-
-
-
-
                     }
                 }else{
                     Toast.makeText(applicationContext, "No such material exists", Toast.LENGTH_SHORT).show()

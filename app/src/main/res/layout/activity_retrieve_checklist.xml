@@ -13,13 +13,15 @@
         app:layout_constraintBottom_toTopOf="@+id/etTodoTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etTodoTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Material Serial No."
+        android:hint="Material details..."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAddTodo"
         app:layout_constraintStart_toStartOf="parent" />
@@ -28,7 +30,10 @@
         android:id="@+id/btnAddTodo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/blackgradient_background"
+        android:fontFamily="@font/roboto_bold"
         android:text="Add Material"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnDeleteDoneTodos" />
 
@@ -36,6 +41,9 @@
         android:id="@+id/btnDeleteDoneTodos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/roboto_bold"
+        android:background="@drawable/blackgradient_background"
         android:text="Delete "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
