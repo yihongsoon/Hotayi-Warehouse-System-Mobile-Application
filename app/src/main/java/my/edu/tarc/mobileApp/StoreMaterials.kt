@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.viewModels
 
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -16,12 +17,17 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import my.edu.tarc.mobileApp.databinding.ActivityReceiveBinding
+import my.edu.tarc.mobileApp.databinding.ActivityStoreMaterialsBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class StoreMaterials : AppCompatActivity() {
     private lateinit var firebaseAuth : FirebaseAuth
+    private var _binding: ActivityStoreMaterialsBinding? = null
+    private val binding get() = _binding!!
+    private val partViewModel: PartViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         firebaseAuth = FirebaseAuth.getInstance()
         super.onCreate(savedInstanceState)
@@ -124,6 +130,9 @@ class StoreMaterials : AppCompatActivity() {
                 val storeQty = findViewById<TextView>(R.id.txtStoreMaterialQty)
                 val sdf = SimpleDateFormat("dd/M/yyyy")
                 val currentDate = sdf.format(Date())
+                val rackout = ""
+                val receiveby = ""
+                val retrieveby = ""
 
                 storeRackID.text= displayStoreRackID
                 storeRackNo.text= displayStoreRackNo
@@ -145,6 +154,13 @@ class StoreMaterials : AppCompatActivity() {
                     storeQty.text="1"
                     storeStatus.text="STORED"
                     Toast.makeText(applicationContext,"The material has been stored successfully",Toast.LENGTH_SHORT).show()
+                    binding.apply{
+                        partViewModel.addPart(Part(binding.txtStoreMaterialSerialNumber.text.toString(),binding.txtStoreMaterialPartNo.text.toString(),
+                            binding.txtStoreMaterialQty.text.toString(),binding.txtStoreMaterialStatus.text.toString(),binding.txtStoreRackInDate.text.toString(),
+                            txtStoreMaterialRackID.text.toString(),txtStoreMaterialRackNo.text.toString(),txtStoreRackInDate.text.toString(),
+                            rackout.toString(),receiveby.toString(),
+                            txtStoredBy.toString(), retrieveby.toString()))
+                    }
                 }
 
             }

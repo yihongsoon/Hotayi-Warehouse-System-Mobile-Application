@@ -13,5 +13,4 @@ class PartRepository (private val partDao: PartDao){
     suspend fun insert(part: Part){
         partDao.insert(part)
     }
-
 }
