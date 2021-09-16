@@ -68,6 +68,7 @@ class Report : AppCompatActivity() {
     }
 
     private fun search(criteria:String, search:String) {
+        arrayList.clear()
         val lottieempty = findViewById<View>(R.id.lottieEmpty)
         lottieempty.visibility = View.GONE
         val query = FirebaseDatabase.getInstance().reference.child("Material").orderByChild(criteria).startAt(search).endAt(search + "\uf8ff")
@@ -75,7 +76,6 @@ class Report : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (userSnapshot in snapshot.children) {
-                        arrayList.clear()
                         val data = userSnapshot.getValue(ReportClass::class.java)
                         arrayList.add(data!!)
                         Log.d("Test", userSnapshot.child("Status").getValue(String::class.java).toString())
