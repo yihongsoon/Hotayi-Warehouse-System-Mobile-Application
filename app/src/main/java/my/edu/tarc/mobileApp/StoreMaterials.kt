@@ -128,11 +128,14 @@ class StoreMaterials : AppCompatActivity() {
                 val storeStatus = findViewById<TextView>(R.id.txtStoreMaterialStatus)
                 val storeRackInDate = findViewById<TextView>(R.id.txtStoreRackInDate)
                 val storeQty = findViewById<TextView>(R.id.txtStoreMaterialQty)
+                val storePartNo = findViewById<TextView>(R.id.txtStoreMaterialPartNo)
+                val storeSerialNo = findViewById<TextView>(R.id.txtStoreMaterialSerialNumber)
                 val sdf = SimpleDateFormat("dd/M/yyyy")
                 val currentDate = sdf.format(Date())
                 val rackout = ""
                 val receiveby = ""
                 val retrieveby = ""
+                val receiveDate = ""
 
                 storeRackID.text= displayStoreRackID
                 storeRackNo.text= displayStoreRackNo
@@ -154,13 +157,9 @@ class StoreMaterials : AppCompatActivity() {
                     storeQty.text="1"
                     storeStatus.text="STORED"
                     Toast.makeText(applicationContext,"The material has been stored successfully",Toast.LENGTH_SHORT).show()
-                    binding.apply{
-                        partViewModel.addPart(Part(binding.txtStoreMaterialSerialNumber.text.toString(),binding.txtStoreMaterialPartNo.text.toString(),
-                            binding.txtStoreMaterialQty.text.toString(),binding.txtStoreMaterialStatus.text.toString(),binding.txtStoreRackInDate.text.toString(),
-                            txtStoreMaterialRackID.text.toString(),txtStoreMaterialRackNo.text.toString(),txtStoreRackInDate.text.toString(),
-                            rackout.toString(),receiveby.toString(),
-                            txtStoredBy.toString(), retrieveby.toString()))
-                    }
+                    val part = Part(storeSerialNo.text.toString(),storePartNo.text.toString(),storeQty.text.toString(),storeStatus.text.toString(),receiveDate,
+                        storeRackID.text.toString(),storeRackNo.text.toString(),storeRackInDate.text.toString(),rackout,receiveby,storedBy.text.toString(), retrieveby)
+                    partViewModel.addPart(part)
                 }
 
             }
