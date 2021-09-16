@@ -129,10 +129,15 @@ class Receive : AppCompatActivity(){
                     myReference.child(Material.serial.toString()).child("retrieveby").setValue(Material.retrieveby)
 
                     binding.apply {
-                        partViewModel.addPart(Part(serial.text.toString(),partNo.text.toString(),qty.text.toString(),
-                            status.text.toString(),txtDate.text.toString(),rackid.toString(),rackno.toString(),
-                            rackin.toString(),rackout.toString(),staffID.text.toString(),storeby.toString(),
-                            retrieveby.toString()))
+                        partViewModel.addPart(Part(binding.txtSerialNo.text.toString(),binding.txtPartNo.text.toString(),
+                            binding.txtQuantity.text.toString(),binding.txtStatus.text.toString(),binding.txtRecDate.text.toString(),
+                            rackid.toString(),rackno.toString(),rackin.toString(),rackout.toString(),binding.txtRecBy.text.toString(),
+                        storeby.toString(), retrieveby.toString()))
+
+                        /*(serial.text.toString(),partNo.text.toString(),qty.text.toString(),
+                        status.text.toString(),txtDate.text.toString(),rackid.toString(),rackno.toString(),
+                        rackin.toString(),rackout.toString(),staffID.text.toString(),storeby.toString(),
+                        retrieveby.toString())*/
                     }
                 
             }else{
