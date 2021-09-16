@@ -54,6 +54,7 @@ class PartAdapter internal constructor(): RecyclerView.Adapter<PartAdapter.ViewH
     internal fun setPart(part: List<Part>){
         this.partList = part
         notifyDataSetChanged()
+
     }
 
     override fun getItemCount(): Int {
