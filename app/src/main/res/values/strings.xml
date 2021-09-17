@@ -10,7 +10,7 @@
     <string name="ReportRackID">Rack ID.</string>
     <string name="ReportStatus">Status</string>
     <string name="ReportQuantity">Quantity</string>
-    <string name="ReportStaffID">Staff ID</string>
+    <string name="ReportStaffID">Retrieve By</string>
     <string name="ReportRackIn">Rack In</string>
     <string name="ReportRackOut">Rack Out</string>
     <string name="ReportPDF">Generate PDF</string>

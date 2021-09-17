@@ -27,7 +27,7 @@ class ReportAdapter (private val reportList: ArrayList<ReportClass>):RecyclerVie
         holder.rackout.text = currentItem.rackout
         holder.rackno.text = currentItem.rackno
         holder.receivedate.text = currentItem.receivedate
-        holder.staffid.text = currentItem.staffid
+        holder.staffid.text = currentItem.storeby
         val isVisible : Boolean = currentItem.visibility
         holder.constraintLayout.visibility = if (isVisible) View.VISIBLE else View.GONE
 
