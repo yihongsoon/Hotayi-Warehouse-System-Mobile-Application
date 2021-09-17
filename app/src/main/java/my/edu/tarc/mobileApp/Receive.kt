@@ -140,11 +140,11 @@ class Receive : AppCompatActivity(){
                     myReference.child(Material.serial.toString()).child("storeby").setValue(Material.storeby)
                     myReference.child(Material.serial.toString()).child("retrieveby").setValue(Material.retrieveby)
 
-                    val part = Part(serial.text.toString(),partNo.text.toString(),qty.text.toString(),status.text.toString(),txtDate.text.toString(),
-                    rackid,rackno,rackin,rackout,staffID.text.toString(),storeby, retrieveby)
+                    /*val part = Part(serial.text.toString(),partNo.text.toString(),qty.text.toString(),status.text.toString(),txtDate.text.toString(),
+                    rackid,rackno,rackin,rackout,staffID.text.toString(),storeby, retrieveby)*/
 
                     if(serial.text!=null) {
-                        partViewModel.addPart(part)
+                        //partViewModel.addPart(part)
                         Toast.makeText(
                             applicationContext,
                             "Part details have been successfully added.",
