@@ -157,9 +157,9 @@ class StoreMaterials : AppCompatActivity() {
                     storeQty.text="1"
                     storeStatus.text="STORED"
                     Toast.makeText(applicationContext,"The material has been stored successfully",Toast.LENGTH_SHORT).show()
-                    val part = Part(storeSerialNo.text.toString(),storePartNo.text.toString(),storeQty.text.toString(),storeStatus.text.toString(),receiveDate,
+                    /*val part = Part(storeSerialNo.text.toString(),storePartNo.text.toString(),storeQty.text.toString(),storeStatus.text.toString(),receiveDate,
                         storeRackID.text.toString(),storeRackNo.text.toString(),storeRackInDate.text.toString(),rackout,receiveby,storedBy.text.toString(), retrieveby)
-                    partViewModel.addPart(part)
+                    partViewModel.addPart(part)*/
                 }
 
             }
