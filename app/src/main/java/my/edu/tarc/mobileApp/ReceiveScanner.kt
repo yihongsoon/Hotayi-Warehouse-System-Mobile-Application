@@ -21,6 +21,8 @@ class ReceiveScanner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
+        val actionbar = supportActionBar
+        actionbar!!.title = "Receive Material"
 
         setupPermission()
         codeScanner()
