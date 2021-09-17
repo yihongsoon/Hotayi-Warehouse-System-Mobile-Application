@@ -78,7 +78,7 @@ class Report : AppCompatActivity() {
                     for (userSnapshot in snapshot.children) {
                         val data = userSnapshot.getValue(ReportClass::class.java)
                         arrayList.add(data!!)
-                        Log.d("Test", userSnapshot.child("Status").getValue(String::class.java).toString())
+                        //Log.d("Test", userSnapshot.child("Status").getValue(String::class.java).toString())
                     }
                     recyclerView.adapter = ReportAdapter(arrayList)
                 }else{
