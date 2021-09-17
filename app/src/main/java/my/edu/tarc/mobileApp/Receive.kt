@@ -140,18 +140,13 @@ class Receive : AppCompatActivity(){
                     myReference.child(Material.serial.toString()).child("storeby").setValue(Material.storeby)
                     myReference.child(Material.serial.toString()).child("retrieveby").setValue(Material.retrieveby)
 
+                    Toast.makeText(
+                        applicationContext,
+                        "Part details have been successfully added.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     /*val part = Part(serial.text.toString(),partNo.text.toString(),qty.text.toString(),status.text.toString(),txtDate.text.toString(),
                     rackid,rackno,rackin,rackout,staffID.text.toString(),storeby, retrieveby)*/
-
-                    if(serial.text!=null) {
-                        //partViewModel.addPart(part)
-                        Toast.makeText(
-                            applicationContext,
-                            "Part details have been successfully added.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                
             }else{
                 Toast.makeText(applicationContext, "Invalid Part Barcode", Toast.LENGTH_SHORT).show()
             }
