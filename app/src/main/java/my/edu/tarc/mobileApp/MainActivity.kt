@@ -19,6 +19,11 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val actionbar = supportActionBar
+
+        actionbar!!.title = "Hotayi Warehouse Homepage"
+
         val btnStore = findViewById<CardView>(R.id.btnStore)
         val btnReceive = findViewById<CardView>(R.id.btnReceive)
         val btnRetrieve = findViewById<CardView>(R.id.btnRetrieve)

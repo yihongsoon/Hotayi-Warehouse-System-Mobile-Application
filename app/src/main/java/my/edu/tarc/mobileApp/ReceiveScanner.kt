@@ -22,7 +22,7 @@ class ReceiveScanner : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
         val actionbar = supportActionBar
-        actionbar!!.title = "Receive Material"
+        actionbar!!.title = "Receive Scanner"
 
         setupPermission()
         codeScanner()

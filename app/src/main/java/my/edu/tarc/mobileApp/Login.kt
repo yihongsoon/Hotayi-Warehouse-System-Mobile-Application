@@ -27,6 +27,9 @@ class Login : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        val actionbar = supportActionBar
+
+        actionbar!!.title = "Login"
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val email = findViewById<EditText>(R.id.eTEmail)

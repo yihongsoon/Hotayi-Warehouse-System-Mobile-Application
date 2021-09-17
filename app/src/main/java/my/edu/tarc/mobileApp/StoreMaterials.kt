@@ -35,7 +35,7 @@ class StoreMaterials : AppCompatActivity() {
 
         val actionbar = supportActionBar
 
-        actionbar!!.title = "Store"
+        actionbar!!.title = "Store Materials"
 
         actionbar.setDisplayHomeAsUpEnabled(true)
 
