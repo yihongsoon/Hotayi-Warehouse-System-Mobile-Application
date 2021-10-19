@@ -5,5 +5,5 @@ This was an assignment assigned to us with the title of Hotayi Warehouse System 
 
 Responsible Module Listing (Soon Yi Hong) :
 
-Login
-Report
+1. Login
+2. Report
