@@ -1,4 +1,4 @@
-#Hotayi Warehouse System
+# Hotayi Warehouse System
 Assignment
 
 This was an assignment assigned to us with the title of Hotayi Warehouse System Mobile Application
